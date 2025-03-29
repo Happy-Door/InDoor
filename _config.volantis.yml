@@ -8,20 +8,20 @@ navbar:
   menu:
     - name: 文档
       icon: fa-duotone fa-book faa-tada
-      url: /v6/getting-started/
+      url: https://github.com/Happy-Door/InDoor
       target: _self
 
     - name: 示例
       icon: fa-duotone fa-play-circle faa-tada
-      url: /examples/
+      url: https://github.com/Happy-Door/InDoor
 
     - name: 帮助
       icon: fa-duotone fa-question-circle faa-tada
-      url: /faqs/
+      url: https://github.com/Happy-Door/InDoor
 
     - name: 鸣谢
       icon: fa-duotone fa-heart
-      url: /contributors/
+      url: /READMD.md/
 
     - name: 更多
       icon: fa-duotone fa-ellipsis-v
@@ -33,8 +33,6 @@ navbar:
         - name: 主题源码
           url: https://github.com/volantis-x/hexo-theme-volantis/
         - name: hr
-        - name: 更新日志
-          url: https://github.com/volantis-x/hexo-theme-volantis/releases/
         - name: 博客文章
           url: /archives/
         - name: hr
@@ -52,21 +50,21 @@ cover:
       url: /
     - name: 文档
       img: volantis-static/media/twemoji/assets/svg/1f516.svg
-      url: /v6/getting-started/
+      url: https://github.com/Happy-Door/InDoor
       target: _self
     - name: 示例
       img: volantis-static/media/twemoji/assets/svg/1f4af.svg
-      url: /examples/
+      url: https://github.com/Happy-Door/InDoor
     - name: 帮助
       img: volantis-static/media/twemoji/assets/svg/1f4ac.svg
-      url: /faqs/
+      url: https://github.com/Happy-Door/InDoor
     - name: 鸣谢
       img: volantis-static/media/twemoji/assets/svg/1f497.svg
-      url: /contributors/
+      url: /READMD.md/
     - name: 归档
       img: volantis-static/media/twemoji/assets/svg/1f5c3.svg
       url: /archives/
-    - name: 源码
+    - name: 主题源码
       img: volantis-static/media/twemoji/assets/svg/1f9ec.svg
       url: https://github.com/volantis-x/hexo-theme-volantis/
       target: _self
@@ -87,15 +85,15 @@ article:
     top_meta: [author, category, date]
     meta_library:
       author:
-        avatar: volantis-static/media/org.volantis/blog/favicon/apple-touch-icon.png
-        name: Volantis Team
-        url: https://github.com/volantis-x/
+        avatar: /css/cover.png
+        name: Happy Door
+        url: https://github.com/Happy-Door/InDoor
       updated:
         title: '本页文档最后更新于：'
 
 
 comments:
-  service: giscus
+  service: disqus
   giscus:
     theme:
       light: "light"
@@ -109,7 +107,7 @@ comments:
     lang: "zh-CN"
     input-position: "top"
   disqus:
-    shortname: volantis
+    shortname: happy-door
     path: /
   valine:
     appId: FIKAgh6n0pUM08JXxhJHChVQ-MdYXbMMI
@@ -121,6 +119,8 @@ comments:
   beaudar:
     repo: volantis-x/community  
     issue-number: 115
+
+
 sidebar:
   for_page: [qgroup, post, category, guide]
   for_post: [toc]
@@ -140,8 +140,8 @@ sidebar:
       sticky: true
       header:
         icon: fa-solid fa-plus
-        title: 社区活动
-        url: /contributors/
+        title: 宗门公告
+        url: /READMD.md/
       content:
         - '**早上好呀**'
     # 文档导航
@@ -155,13 +155,13 @@ sidebar:
       rows:
         - name: 常见问题
           icon: fa-solid fa-question-circle
-          url: /faqs/
+          url: /READMD.md/
         - name: 示例博客
           icon: fa-solid fa-play-circle
-          url: /examples/
+          url: /READMD.md/
         - name: 特别感谢
           icon: fa-solid fa-handshake
-          url: /contributors/
+          url: /READMD.md/
         - name: 测试博文
           icon: fa-solid fa-file-alt
           url: /archives/
@@ -170,11 +170,7 @@ sidebar:
           url: https://github.com/volantis-x/hexo-theme-volantis/
           rel: external nofollow noopener noreferrer
           target: _blank
-        - name: 更新日志
-          icon: fa-solid fa-tags
-          url: https://github.com/volantis-x/hexo-theme-volantis/releases/
-          rel: external nofollow noopener noreferrer
-          target: _blank
+       
 
     # qrcode widget
     qrcode:
@@ -272,20 +268,20 @@ sidebar:
 
 site_footer:
   layout: [aplayer, social, source, analytics, copyright]
-  copyright: '[Copyright © Since 2017 Volantis Team](https://github.com/volantis-x/)'
+  copyright: '天下第一'
   social:
     - img: volantis-static/media/org.volantis/icon/1322024-social-media/020-rss.svg
-      url: atom.xml
+      url: https://github.com/Happy-Door/InDoor
     - img: volantis-static/media/org.volantis/icon/1322024-social-media/029-github.svg
-      url: https://github.com/volantis-x/
+      url: https://github.com/Happy-Door/InDoor
     - img: volantis-static/media/org.volantis/icon/1322024-social-media/010-facebook.svg
-      url: https://t.me/volantis_x
+      url:https://github.com/Happy-Door/InDoor
     - img: volantis-static/media/org.volantis/icon/1322024-social-media/018-twitter.svg
-      url: https://t.me/volantis_x
+      url: https://github.com/Happy-Door/InDoor
     - img: volantis-static/media/org.volantis/icon/1322024-social-media/045-telegram.svg
-      url: https://t.me/volantis_x
+      url: https://github.com/Happy-Door/InDoor
     - img: volantis-static/media/org.volantis/icon/1322024-social-media/006-youtube.svg
-      url: https://t.me/volantis_x
+      url: https://github.com/Happy-Door/InDoor
 
 
 tag_plugins:
