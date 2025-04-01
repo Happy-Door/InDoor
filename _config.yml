@@ -18,3 +18,7 @@ import:
     - <script></script>
   body_end:
     - <script></script>
+deploy:
+  type: git
+  repo: git@github.com:Happy-Door/InDoor1.git
+  branch: master
