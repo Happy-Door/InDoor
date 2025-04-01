@@ -20,8 +20,8 @@ import:
     - <script></script>
 deploy:
   type: git
-  repo: git@github.com:Happy-Door/InDoor1.git
+  repo: git@github.com:Happy-Door/InDoor.git
   branch: gh-pages
 
 url: https://happy-door.github.io
-root: /InDoor1/
+root: /InDoor/
