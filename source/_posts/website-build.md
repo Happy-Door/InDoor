@@ -25,6 +25,6 @@ Github提供了Github Pages来帮助我们架设静态网站，Github Pages是�
 点击 sign in 登录你的Github账号，在个人（或组织）的首页找到头像下“Your repositories”的选项，点击new新建一个仓库。
 
 步骤包括：命名，描述（选填），选择公开与否（默认是public，公开的仓库所有人都可以访问，private则只有个人可访问，对组织而言则是部分人可访问，同样也影响最后生成的网站访问权限。不过这个选项是随时可以修改的），
-选择是否生成一个README（介绍文件），点击“cteate repository”创建。
+选择是否生成一个README（介绍文件），点击“create repository”创建。
 
 -- 未完待续 --
