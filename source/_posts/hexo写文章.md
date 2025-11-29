@@ -2,7 +2,7 @@
 title: hexo写文章
 author: Benetaid
 categories:
-  - 未分类
+  - [新弟子进！]
 tags:
   - 默认标签
 toc: true

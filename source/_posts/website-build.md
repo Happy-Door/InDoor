@@ -2,6 +2,7 @@
 title: 在GitHub上架设博客网站
 toc: true
 date: 2025/4/8 
+categories: [github]
 ---
 
 ## 简单介绍
