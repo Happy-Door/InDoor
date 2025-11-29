@@ -1,7 +1,15 @@
 ---
 title: hexo写文章
-date: 2025-11-29 20:41:14
+author: Benetaid
+categories:
+  - 未分类
 tags:
+  - 默认标签
+toc: true
+comments: true
+description: ''
+date: 2025-11-29 20:57:10
+updated:
 ---
 
 Hexo 新建文章时会自动复制 scaffolds/post.md 的内容作为文章开头。
