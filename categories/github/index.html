@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://happy-door.github.io/categories/未分类/"/>
+  <link rel="canonical" href="https://happy-door.github.io/categories/github/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -35,12 +35,12 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>分类：未分类 - Happy Door</title>
+  <title>分类：github - Happy Door</title>
   <meta name="keywords" content="undefined">
   <meta desc name="description" content="Happy Door - John Doe - Happy Door">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Happy Door">
-<meta property="og:url" content="https://happy-door.github.io/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/index.html">
+<meta property="og:url" content="https://happy-door.github.io/categories/github/index.html">
 <meta property="og:site_name" content="Happy Door">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2244,7 +2244,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/InDoor/',
     debug: false,
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1764421370532),
+    lastupdate: new Date(1764424457691),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2698,7 +2698,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://happy-door.github.io/2025/11/29/hexo写文章/">
+  <link itemprop="mainEntityOfPage" href="https://happy-door.github.io/2025/04/08/website-build/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Happy Door">
   </span>
@@ -2716,25 +2716,27 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/InDoor/2025/11/29/hexo%E5%86%99%E6%96%87%E7%AB%A0/"  itemprop="url">
-        hexo写文章
+      <a href="/InDoor/2025/04/08/website-build/"  itemprop="url">
+        在GitHub上架设博客网站
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        <p>Hexo 新建文章时会自动复制 scaffolds&#x2F;post.md 的内容作为文章开头。</p>
-<p>如果你执行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post &quot;hexo写文章&quot;</span><br></pre></td></tr></table></figure>
+        <div class="story post-story"><h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><p>Github提供了Github Pages来帮助我们架设静态网站，Github Pages是一项免费的静态文件部署服务, 通过它可以把生成的静态网站托管在Github上。<br>本篇博客不负责介绍其他搭建网站方式和各自的优劣，我们直接开始吧。</p>
+</div><div class="story post-story"><h2 id="Step-1：注册一个github账号"><a href="#Step-1：注册一个github账号" class="headerlink" title="Step 1：注册一个github账号"></a>Step 1：注册一个github账号</h2><p>访问<a target="_blank" rel="noopener" href="https://github.com/">Github</a>并点击 sign up 进行注册，需要提供用户名、密码和邮箱，不需要手机号。<br>用户名不允许重复，顺带一提，在Github上搭建的个人网站，用户名最终会出现在网址上，所以记得取个自己喜欢的名字！</p>
+<p>接着Github会询问你是否需要付费使用。免费服务足够满足大部分开发者的需求了，付费服务主要面向团队和企业。</p>
+<p>此后Github会问你使用Github的目的、熟练度等等，类似于用户调研，照实填写即可。</p>
+<p>之后Github会向你注册时填写的邮箱发送验证信息，在邮件中打开链接进行确认，账号就顺利激活了。</p>
+</div><div class="story post-story"><h2 id="Step-2：创建一个仓库"><a href="#Step-2：创建一个仓库" class="headerlink" title="Step 2：创建一个仓库"></a>Step 2：创建一个仓库</h2><p>点击 sign in 登录你的Github账号，在个人（或组织）的首页找到头像下“Your repositories”的选项，点击new新建一个仓库。</p>
+<p>步骤包括：命名，描述（选填），选择公开与否（默认是public，公开的仓库所有人都可以访问，private则只有个人可访问，对组织而言则是部分人可访问，同样也影响最后生成的网站访问权限。不过这个选项是随时可以修改的），选择是否生成一个README（介绍文件），点击“create repository”创建。</p>
+<p>接下来会有一大堆关于git操作的指示，新手可以先跳过，直接点击create a new file构建一个新文件 index.html，（静态http文件托管服务的默认访问文件就是index.html）用途是渲染网页。</p>
+<p>随后点击导航栏中的设置Settings，找到侧边栏中的Pages,source选择 deploy from a branch, branch里的分支改成你的主分支（main, master, gh-pages等等），目录默认是根目录。<br>生成站点页面时Github Pages会在你选择的分支里找到相关文件。<br>这个时候刷新页面就可以看到Github生成的网址了。</p>
+</div><div class="story post-story"><h2 id="Step-3：配置主题"><a href="#Step-3：配置主题" class="headerlink" title="Step 3：配置主题"></a>Step 3：配置主题</h2><p>参见<a href="">Jekyll主题配置</a>；<a href="">Hexo主题配置</a>。</p>
+</div><div class="story post-story"><h2 id="Step-4：写博文"><a href="#Step-4：写博文" class="headerlink" title="Step 4：写博文"></a>Step 4：写博文</h2><p>– 未完待续 –</p>
 
-<p>它会生成：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source/_posts/hexo写文章.md</span><br></pre></td></tr></table></figure>
-
-<p>并将 scaffolds&#x2F;post.md 的内容复制进去。</p>
-<p>文章开头有一个 Front-Matter（YAML 头部），用于告诉 Hexo 和主题这篇文章的各种元数据。保留并更改你需要的部分。</p>
-
-
+</div>
       
     
   </div>
@@ -2750,13 +2752,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <meta itemprop="url" content="https://github.com/Happy-Door/InDoor">
           </span>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-11-29T20:57:10+08:00">2025-11-29</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-04-08T00:00:00+08:00">2025-04-08</time>
         
           <span class="dot"></span>
-          <a class="category-link" href="/InDoor/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
+          <a class="category-link" href="/InDoor/categories/github/">github</a>
           
             <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/InDoor/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/" itemprop="url"><span itemprop="name">未分类</span></a>
+              <a href="/InDoor/categories/github/" itemprop="url"><span itemprop="name">github</span></a>
             </span>
           
         
@@ -2832,14 +2834,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <ul class="entry navigation">
         
           <li><a class="flat-box"
-            title="/InDoor/categories/%E6%96%B0%E5%BC%9F%E5%AD%90%E8%BF%9B%EF%BC%81/" href="/InDoor/categories/%E6%96%B0%E5%BC%9F%E5%AD%90%E8%BF%9B%EF%BC%81/"
-            active-action="action-InDoorcategoriesE696B0E5BC9FE5AD90E8BF9BEFBC81"
-            ><div class='name'>新弟子进！</div><div class='badge'>(1)</div></a></li>
+            title="/InDoor/categories/github/" href="/InDoor/categories/github/"
+            active-action="action-InDoorcategoriesgithub"
+            ><div class='name'>github</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
-            title="/InDoor/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/" href="/InDoor/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"
-            active-action="action-InDoorcategoriesE69CAAE58886E7B1BB"
-            ><div class='name'>未分类</div><div class='badge'>(1)</div></a></li>
+            title="/InDoor/categories/%E6%96%B0%E5%BC%9F%E5%AD%90%E8%BF%9B%EF%BC%81/" href="/InDoor/categories/%E6%96%B0%E5%BC%9F%E5%AD%90%E8%BF%9B%EF%BC%81/"
+            active-action="action-InDoorcategoriesE696B0E5BC9FE5AD90E8BF9BEFBC81"
+            ><div class='name'>新弟子进！</div><div class='badge'>(2)</div></a></li>
         
       </ul>
     </div>
@@ -4006,7 +4008,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4330,7 +4332,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://happy-door.github.io/InDoor/","name":"Happy Door"}},{"@type":"ListItem","position":2,"item":{"@id":"https://happy-door.github.io/InDoor/categories/未分类/","name":"未分类"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","description":""},"publisher":{"@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://happy-door.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/"},"publisher":{"@type":"Organization","name":"Happy Door","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://happy-door.github.io/InDoor/","name":"Happy Door"}},{"@type":"ListItem","position":2,"item":{"@id":"https://happy-door.github.io/InDoor/categories/github/","name":"github"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","description":""},"publisher":{"@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://happy-door.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/"},"publisher":{"@type":"Organization","name":"Happy Door","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
