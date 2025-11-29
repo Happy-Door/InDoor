@@ -309,7 +309,7 @@ plugins:
     # id: 4917524698 # vol blue
     # id: 76244489 # vol white
     # id: 5135845906 # for Volantis 3.0
-    id: 5062959861 # TOP 30
+    id: 17472066121 # epic
   message:          # 音乐通知，播放、暂停、失败 时的图标
     enable: true
     icon:     # 默认图标，支持对图标添加颜色，可选值：see：/source/css/_plugins/message.styl
