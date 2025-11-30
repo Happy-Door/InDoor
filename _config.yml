@@ -22,6 +22,8 @@ deploy:
   type: git
   repo: git@github.com:Happy-Door/InDoor.git
   branch: gh-pages
+static_prefix:
+  js: /js/
 
 url: https://happy-door.github.io
 root: /InDoor/

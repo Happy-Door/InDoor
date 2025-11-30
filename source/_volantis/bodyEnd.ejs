@@ -1,1 +1,69 @@
-<script defer src="<%= config.root %>js/player-control.js"></script>
+<script>
+// ====================
+//   回到顶部 ＆ 回到底部按钮 (独立、原生 JS 版本)
+// ====================
+
+// 使用 setTimeout 延迟执行，确保 DOM 加载完成
+setTimeout(() => {
+    
+    // 如果您发现屏幕右侧的“向上”箭头 (s-top) 已经满足需求，您可以注释掉这段代码来避免重复的按钮。
+    // Volantis 主题自带了一个 #s-top 按钮。
+    
+    // 创建按钮容器
+    const container = document.createElement('div');
+    container.id = 'custom-scroll-buttons';
+    container.style.position = 'fixed';
+    container.style.right = '20px';
+    container.style.bottom = '40px';
+    container.style.zIndex = '999';
+    container.style.display = 'flex';
+    container.style.flexDirection = 'column';
+    container.style.gap = '10px';
+
+    // 创建按钮（顶部 - 使用原生 JS）
+    const topBtn = document.createElement('button');
+    topBtn.innerHTML = '⬆️';
+    topBtn.title = '返回顶部';
+    topBtn.className = 'scroll-btn';
+    topBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // 原生平滑滚动到顶部
+    };
+
+    // 创建按钮（底部 - 使用原生 JS）
+    const bottomBtn = document.createElement('button');
+    bottomBtn.innerHTML = '⬇️';
+    bottomBtn.title = '跳到底部';
+    bottomBtn.className = 'scroll-btn';
+    bottomBtn.onclick = () => {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); // 原生平滑滚动到底部
+    };
+
+    // 把按钮放进容器并添加到 body
+    container.appendChild(topBtn);
+    container.appendChild(bottomBtn);
+    document.body.appendChild(container);
+
+}, 500); // 延迟 500 毫秒执行
+
+</script>
+
+<style>
+/* CSS 样式，保持不变 */
+.scroll-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  background: #ffffffdd;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all .2s;
+}
+
+.scroll-btn:hover {
+  background: #ffffffee;
+  transform: translateY(-2px);
+}
+</style>
