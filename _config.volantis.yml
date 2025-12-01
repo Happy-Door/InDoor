@@ -31,7 +31,7 @@ navbar:
           toggle: darkmode
         - name: hr
         - name: 主题源码
-          url: https://github.com/volantis-x/hexo-theme-volantis/
+          url: https://github.com/Happy-Door/hexo-theme-volantis
         - name: hr
         - name: 博客文章
           url: /blogs/
@@ -166,7 +166,7 @@ sidebar:
           url: /blogs/
         - name: 主题源码
           icon: fa-solid fa-file-code
-          url: https://github.com/volantis-x/hexo-theme-volantis/
+          url: https://github.com/Happy-Door/hexo-theme-volantis
           rel: external nofollow noopener noreferrer
           target: _blank
         - name: 更新日志
@@ -414,8 +414,8 @@ rightmenus:
       - {id: 'examples', name: '示例博客', icon: 'fa-solid fa-rss PETERRIVE', link: '/examples/', group: 'link'}
       - {id: 'contributors', name: '加入社区', icon: 'fa-solid fa-fan fa-spin AMETHYST', link: '/contributors/', group: 'link'}
       - hr
-      - {id: 'source_docs', name: '本站源码', icon: 'fa-solid fa-code-branch WETASPHALT', link: 'https://github.com/volantis-x/volantis-docs/', group: 'link'}
-      - {id: 'source_theme', name: '主题源码', icon: 'fa-solid fa-code-branch CONCRETE', link: 'https://github.com/volantis-x/hexo-theme-volantis/', group: 'link'}
+      - {id: 'source_docs', name: '本站源码', icon: 'fa-solid fa-code-branch WETASPHALT', link: 'https://github.com/Happy-Door/InDoor', group: 'link'}
+      - {id: 'source_theme', name: '主题源码', icon: 'fa-solid fa-code-branch CONCRETE', link: 'https://github.com/Happy-Door/hexo-theme-volantis', group: 'link'}
 
     darkMode: 
       - {id: 'darkMode', name: '暗黑模式', icon: 'fa-solid fa-eclipse WISTERIA', event: 'volantis.dark.toggle()', group: 'darkMode'}
