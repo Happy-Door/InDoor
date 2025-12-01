@@ -375,42 +375,51 @@ rightmenus:
     - hr
     - music
   options:
-    iconPrefix: fa-duotone PETERRIVE
+    iconPrefix: fa-solid
     articleShowLink: true
   plugins:
     navigation: 
-      - {id: 'left', name: '转到上一页', icon: 'fa-duotone fa-arrow-left PETERRIVE', event: 'history.back()', group: 'navigation'}
-      - {id: 'right', name: '转到下一页', icon: 'fa-duotone fa-arrow-right PETERRIVE', event: 'history.forward()', group: 'navigation'}
-      - {id: 'redo', name: '刷新当前页面', icon: 'fa-duotone fa-redo PETERRIVE', event: 'window.location.reload()', group: 'navigation'}
-      # - {id: 'home', name: '回到首页', icon: 'fa-duotone fa-home PETERRIVE', link: '/', group: 'navigation'}
-      - {id: 'up', name: '回到顶部', icon: 'fa-duotone fa-arrow-up PETERRIVE', event: 'VolantisApp.scrolltoElement(volantis.dom.bodyAnchor)', group: 'navigation'}
+      - {id: 'left', name: '转到上一页', icon: 'fa-solid fa-arrow-left PETERRIVE', event: 'history.back()', group: 'navigation'}
+      - {id: 'right', name: '转到下一页', icon: 'fa-solid fa-arrow-right PETERRIVE', event: 'history.forward()', group: 'navigation'}
+      - {id: 'redo', name: '刷新当前页面', icon: 'fa-solid fa-rotate-right PETERRIVE', event: 'window.location.reload()', group: 'navigation'}
+      # Home 图标也替换为免费版：
+      # - {id: 'home', name: '回到首页', icon: 'fa-solid fa-house PETERRIVE', link: '/', group: 'navigation'}
+      - {id: 'up', name: '回到顶部', icon: 'fa-solid fa-arrow-up PETERRIVE', event: 'VolantisApp.scrolltoElement(volantis.dom.bodyAnchor)', group: 'navigation'}
+
     articlePage:
-      - {id: 'printMode', name: '打印页面', icon: 'fa-duotone fa-print TURQUOISE', event: 'printMode', group: 'articlePage'}
-      - {id: 'readMode', name: '阅读模式', icon: 'fa-duotone fa-book-open EMERALD', event: 'readMode', group: 'articlePage'}
+      - {id: 'printMode', name: '打印页面', icon: 'fa-solid fa-print TURQUOISE', event: 'printMode', group: 'articlePage'}
+      - {id: 'readMode', name: '阅读模式', icon: 'fa-solid fa-book-open EMERALD', event: 'readMode', group: 'articlePage'}
+
     inputBox:
-      - {id: 'copyPaste', name: '粘贴文本', icon: 'fa-duotone PETERRIVE fa-paste', event: 'copyPaste', group: 'inputBox'}
-      - {id: 'copyAll', name: '全选文本', icon: 'fa-duotone PETERRIVE fa-object-ungroup', event: 'copyAll', group: 'inputBox'}
-      - {id: 'copyCut', name: '剪切文本', icon: 'fa-duotone PETERRIVE fa-cut', event: 'copyCut', group: 'inputBox'}
+      - {id: 'copyPaste', name: '粘贴文本', icon: 'fa-solid fa-paste PETERRIVE', event: 'copyPaste', group: 'inputBox'}
+      - {id: 'copyAll', name: '全选文本', icon: 'fa-solid fa-object-ungroup PETERRIVE', event: 'copyAll', group: 'inputBox'}
+      - {id: 'copyCut', name: '剪切文本', icon: 'fa-solid fa-cut PETERRIVE', event: 'copyCut', group: 'inputBox'}
+
     seletctText:
-      - {id: 'copyText', name: '复制文本', icon: 'fa-duotone PETERRIVE fa-copy', event: 'copyText', group: 'seletctText'}
-      - {id: 'searchWord', name: '站内搜索', icon: 'fa-duotone PETERRIVE fa-search', event: 'OpenSearch(__text__)', group: 'seletctText'}
-      - {id: 'bingSearch', name: '必应搜索', icon: 'fa-duotone PETERRIVE fa-search', event: 'window.open(`https://cn.bing.com/search?q=${__text__}`)', group: 'seletctText'}
+      - {id: 'copyText', name: '复制文本', icon: 'fa-solid fa-copy PETERRIVE', event: 'copyText', group: 'seletctText'}
+      - {id: 'searchWord', name: '站内搜索', icon: 'fa-solid fa-magnifying-glass PETERRIVE', event: 'OpenSearch(__text__)', group: 'seletctText'}
+      - {id: 'bingSearch', name: '必应搜索', icon: 'fa-solid fa-magnifying-glass PETERRIVE', event: 'window.open(`https://cn.bing.com/search?q=${__text__}`)', group: 'seletctText'}
+
     elementCheck:
-      - {id: 'openTab', name: '新标签页打开', icon: 'fa-duotone PETERRIVE fa-external-link-square-alt', event: 'window.open(__link__)', group: 'elementCheck'}
-      - {id: 'copyLink', name: '复制链接地址', icon: 'fa-duotone PETERRIVE fa-link', event: 'copyLink', group: 'elementCheck'}
+      - {id: 'openTab', name: '新标签页打开', icon: 'fa-solid fa-up-right-from-square PETERRIVE', event: 'window.open(__link__)', group: 'elementCheck'}
+      - {id: 'copyLink', name: '复制链接地址', icon: 'fa-solid fa-link PETERRIVE', event: 'copyLink', group: 'elementCheck'}
+
     elementImage:
-      - {id: 'copyImg', name: '复制图片', icon: 'fa-duotone PETERRIVE fa-image', event: 'copyImg', group: 'elementImage'}
-      - {id: 'googleImg', name: '谷歌识图', icon: 'fa-duotone PETERRIVE fa-images', event: 'window.open(`https://www.google.com/searchbyimage?image_url=${__link__}`)', group: 'elementImage'}
+      - {id: 'copyImg', name: '复制图片', icon: 'fa-solid fa-image PETERRIVE', event: 'copyImg', group: 'elementImage'}
+      - {id: 'googleImg', name: '谷歌识图', icon: 'fa-solid fa-images PETERRIVE', event: 'window.open(`https://www.google.com/searchbyimage?image_url=${__link__}`)', group: 'elementImage'}
+    
   menus:
-      links:
-        - {id: 'help', name: '常见问题', icon: 'fa-duotone fa-question EMERALD', link: '/faqs/', group: 'link'}
-        - {id: 'examples', name: '示例博客', icon: 'fa-duotone fa-rss PETERRIVE', link: '/examples/', group: 'link'}
-        - {id: 'contributors', name: '加入社区', icon: 'fa-duotone fa-fan fa-spin AMETHYST', link: '/contributors/', group: 'link'}
-        - hr
-        - {id: 'source_docs', name: '本站源码', icon: 'fa-duotone fa-code-branch WETASPHALT', link: 'https://github.com/volantis-x/volantis-docs/', group: 'link'}
-        - {id: 'source_theme', name: '主题源码', icon: 'fa-duotone fa-code-branch CONCRETE', link: 'https://github.com/volantis-x/hexo-theme-volantis/', group: 'link'}
-      darkMode: 
-        - {id: 'darkMode', name: '暗黑模式', icon: 'fa-duotone fa-eclipse-alt WISTERIA', event: 'volantis.dark.toggle()', group: 'darkMode'}
-      prevNext:
-        - {id: 'prev', name: '查看上一篇', icon: 'fa-duotone fa-angles-left PETERRIVE', event: "volantis.rightmenu.jump('prev')", group: 'prevNext'}
-        - {id: 'next', name: '查看下一篇', icon: 'fa-duotone fa-angles-right PETERRIVE', event: "volantis.rightmenu.jump('next')", group: 'prevNext'}
+    links:
+      - {id: 'help', name: '常见问题', icon: 'fa-solid fa-circle-question EMERALD', link: '/faqs/', group: 'link'}
+      - {id: 'examples', name: '示例博客', icon: 'fa-solid fa-rss PETERRIVE', link: '/examples/', group: 'link'}
+      - {id: 'contributors', name: '加入社区', icon: 'fa-solid fa-fan fa-spin AMETHYST', link: '/contributors/', group: 'link'}
+      - hr
+      - {id: 'source_docs', name: '本站源码', icon: 'fa-solid fa-code-branch WETASPHALT', link: 'https://github.com/volantis-x/volantis-docs/', group: 'link'}
+      - {id: 'source_theme', name: '主题源码', icon: 'fa-solid fa-code-branch CONCRETE', link: 'https://github.com/volantis-x/hexo-theme-volantis/', group: 'link'}
+
+    darkMode: 
+      - {id: 'darkMode', name: '暗黑模式', icon: 'fa-solid fa-eclipse WISTERIA', event: 'volantis.dark.toggle()', group: 'darkMode'}
+
+    prevNext:
+      - {id: 'prev', name: '查看上一篇', icon: 'fa-solid fa-angles-left PETERRIVE', event: "volantis.rightmenu.jump('prev')", group: 'prevNext'}
+      - {id: 'next', name: '查看下一篇', icon: 'fa-solid fa-angles-right PETERRIVE', event: "volantis.rightmenu.jump('next')", group: 'prevNext'}
