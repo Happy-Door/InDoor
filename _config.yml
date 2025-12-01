@@ -9,6 +9,10 @@ language:
   - en
   - zh-TW
 
+index_generator:
+  per_page: 2   # 首页每页文章数量
+  order_by: -date
+
 import:
   head_begin:
     - <meta name="theme-color" content="#ffffff">
@@ -22,8 +26,6 @@ deploy:
   type: git
   repo: git@github.com:Happy-Door/InDoor.git
   branch: gh-pages
-static_prefix:
-  js: /js/
 
 url: https://happy-door.github.io
 root: /InDoor/
