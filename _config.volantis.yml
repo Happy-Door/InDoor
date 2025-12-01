@@ -85,7 +85,7 @@ article:
     top_meta: [author, category, date]
     meta_library:
       author:
-        avatar: volantis-static/media/org.volantis/blog/favicon/apple-touch-icon.png
+        avatar: /InDoor/images/logo.jpg
         name: Happy Door
         url: https://github.com/Happy-Door/InDoor
       updated:
@@ -121,9 +121,21 @@ comments:
     issue-number: 115
 #侧边栏
 sidebar:
+  position: right # left right
+  # 主页、分类、归档等独立页面
   for_page: [qgroup, post, category, guide]
   for_post: [toc]
   widget_library:
+   # 博主信息
+    blogger:
+      class: blogger
+      display: [desktop] # [desktop, mobile]
+      avatar: https://gcore.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
+      title:
+      subtitle:
+      jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
+      social: true
+    # 目录
     toc:
       class: toc
       display: [desktop, mobile] # [desktop, mobile]
@@ -133,6 +145,13 @@ sidebar:
       list_number: true
       min_depth: 2
       max_depth: 5
+    # ---------------------------------------
+    # music
+    music:
+      class: music
+      display: [desktop, mobile] # [desktop, mobile]
+      pjaxReload: false
+    # ---------------------------------------
     post:
       class: text
       display: [desktop, mobile] # [desktop, mobile]
