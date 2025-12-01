@@ -3,9 +3,6 @@
 //   回到顶部 ＆ 回到底部按钮 (独立、原生 JS 版本)
 // ====================
 
-// 使用 setTimeout 延迟执行，确保 DOM 加载完成
-setTimeout(() => {
-    
     // 如果您发现屏幕右侧的“向上”箭头 (s-top) 已经满足需求，您可以注释掉这段代码来避免重复的按钮。
     // Volantis 主题自带了一个 #s-top 按钮。
     
@@ -42,8 +39,6 @@ setTimeout(() => {
     container.appendChild(topBtn);
     container.appendChild(bottomBtn);
     document.body.appendChild(container);
-
-}, 500); // 延迟 500 毫秒执行
 
 </script>
 
