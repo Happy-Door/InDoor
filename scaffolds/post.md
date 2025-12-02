@@ -1,6 +1,6 @@
 ---
 title: {{ title }}
-author: HAVEDOG
+author: {{ author }}
 date: {{ date }}
 updated: {{ updated }}
 categories:

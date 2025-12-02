@@ -1,12 +1,18 @@
 ---
-title:
-  waline暗黑模式字体颜色调整
-author:
-  土土
-date: 2025-12-02 11:27:06
+title: waline暗黑模式字体颜色调整
+categories:
+  - 逍遥门持续装修中
+tags:
+toc: true
+comments: true
+description: 本篇记录如何在 Volantis 中覆盖 waline 的暗黑模式评论字体颜色。
+
+date: 2025-12-02 11:54:35
+author: 土土
+updated:
 ---
 
-# 问题：暗黑模式下waline评论与背景颜色接近，难以看清
+问题：暗黑模式下waline评论与背景颜色接近，难以看清。
 
 本篇记录如何在 Volantis 中覆盖 waline 的暗黑模式评论字体颜色。
 
