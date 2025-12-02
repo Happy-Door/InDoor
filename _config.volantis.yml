@@ -37,7 +37,9 @@ navbar:
           url: /blogs/
         - name: hr
 
-
+search:
+  enable: true
+  service: hexo
 
 cover:
   # height_scheme: full # full, half

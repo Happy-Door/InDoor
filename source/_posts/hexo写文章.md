@@ -4,7 +4,6 @@ author: Benetaid
 categories:
   - [新弟子进！]
 tags:
-  - 默认标签
 toc: true
 comments: true
 description: ''
