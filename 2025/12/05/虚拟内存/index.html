@@ -5,8 +5,8 @@
   <meta name="Volantis" content="6.0.0-alpha.1">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://happy-door.github.io/archives/2025/"/>
+  
+  <link rel="canonical" href="https://happy-door.github.io/2025/12/05/虚拟内存/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -35,16 +35,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>归档：2025 - Happy Door</title>
-  <meta name="keywords" content="undefined">
+  <title>虚拟内存 - Happy Door</title>
+  <meta name="keywords" content="默认标签,undefined">
   <meta desc name="description" content="Happy Door - John Doe - Happy Door">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Happy Door">
-<meta property="og:url" content="https://happy-door.github.io/archives/2025/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="虚拟内存">
+<meta property="og:url" content="https://happy-door.github.io/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/index.html">
 <meta property="og:site_name" content="Happy Door">
+<meta property="og:description" content="本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-12-05T10:18:55.000Z">
+<meta property="article:modified_time" content="2025-12-05T10:19:43.735Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="默认标签">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2244,7 +2249,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2318,7 +2323,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin begin-->
     
     <!-- Custom Files bodyBegin end-->
-    <header itemscope itemtype="https://schema.org.cn/WPHeader" id="l_header" class="l_header auto shadow floatable blur " style='opacity: 0' >
+    <header itemscope itemtype="https://schema.org.cn/WPHeader" id="l_header" class="l_header auto shadow floatable blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2683,117 +2688,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div id="l_body">
       <div id="l_cover">
   
-    
-      <div class="cover-wrapper  dock" id='half'>
-        
-  <div id="parallax-window"></div>
-
-<div class='cover-body'>
-  <div class='top'>
-    
-    
-      <p class="title">Happy Door</p>
-    
-    
-      <p class="subtitle">天下第一逍遥门</p>
-    
-  </div>
-  <div class='bottom'>
-    <div class='menu navigation'>
-      <div class='list-h'>
-        
-          
-            <a href="/InDoor/"
-              
-              
-              active-action="action-InDoor">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4f0.svg'><p>博客</p>
-            </a>
-          
-            <a href="/InDoor/blogs/"
-              
-              
-                target="_self"
-              
-              active-action="action-InDoorblogs">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f516.svg'><p>文档</p>
-            </a>
-          
-            <a target="_blank" rel="noopener" href="https://github.com/Happy-Door/InDoor"
-              
-              
-              active-action="action-https:githubcomHappy-DoorInDoor">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4af.svg'><p>示例</p>
-            </a>
-          
-            <a target="_blank" rel="noopener" href="https://github.com/Happy-Door/InDoor"
-              
-              
-              active-action="action-https:githubcomHappy-DoorInDoor">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4ac.svg'><p>帮助</p>
-            </a>
-          
-            <a href="/InDoor/README.md/"
-              
-              
-              active-action="action-InDoorREADMEmd">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f497.svg'><p>鸣谢</p>
-            </a>
-          
-            <a href="/InDoor/blogs/"
-              
-              
-              active-action="action-InDoorblogs">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f5c3.svg'><p>归档</p>
-            </a>
-          
-            <a href="https://github.com/Happy-Door/InDoor"
-              
-              
-                target="_self"
-              
-              active-action="action-https:githubcomHappy-DoorInDoor">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f9ec.svg'><p>源码</p>
-            </a>
-          
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-  
 </div>
 
       <div id="safearea">
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="https://happy-door.github.io/2025/12/05/虚拟内存/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Happy Door">
@@ -2803,364 +2704,282 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/InDoor/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/"  itemprop="url">
+    
+    
+      <h1 class="title" itemprop="name headline">
         虚拟内存
-      </a>
-    </h2>
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="https://schema.org.cn/Person">
+  <a itemprop="url" class='author' target="_blank" href="https://github.com/Happy-Door/InDoor" rel="nofollow noopener">
+    <img itemprop="image" src="/InDoor/images/logo.jpg" class="lazyload" data-srcset="/InDoor/images/logo.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">Happy Door</p>
+  </a>
+</div>
+
+          
+        
+          
+            
   
-  <div class='md article-desc' itemprop="articleBody">
+  
+  
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/InDoor/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
     
-      <p>本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。</p>
+      <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+        <a href="/InDoor/categories/%E7%AC%94%E8%AE%B0/" itemprop="url"><span itemprop="name">笔记</span></a>
+      </span>
     
   </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' target="_blank" rel="noopener" href='https://github.com/Happy-Door/InDoor'><img src='/InDoor/images/logo.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="https://schema.org.cn/Person">
-            <meta itemprop="image" content="/InDoor/images/logo.jpg">
-            <meta itemprop="name" content="Happy Door">
-            <meta itemprop="url" content="https://github.com/Happy-Door/InDoor">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-12-05T18:18:55+08:00">2025-12-05</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/InDoor/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/InDoor/categories/%E7%AC%94%E8%AE%B0/" itemprop="url"><span itemprop="name">笔记</span></a>
-            </span>
+
+
+
           
         
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-12-05T18:18:55+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2025年12月5日</p>
+  </a>
+</div>
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
       </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <p>本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。</p>
+<span id="more"></span>
+
+<p>为了更好地共享同一块物理内存的数据 &amp; 简化编程模型，<strong>虚拟内存（Virtual Memory）</strong> 应运而生。<br>虚拟内存为每个进程提供独立、连续、逻辑统一的地址空间。<br>实际访问发生在物理内存 + 磁盘之间，由操作系统自动管理。</p>
+<h1 id="与物理内存建立映射：页"><a href="#与物理内存建立映射：页" class="headerlink" title="与物理内存建立映射：页"></a>与物理内存建立映射：页</h1><p>概念上，内存是一块连续字节数组，为了方便访问和存储，把地址空间进行层级划分：</p>
+<ul>
+<li>把虚拟内存划分为若干大小为 P 字节的块，称为虚拟页（VP）</li>
+<li>物理页（PP）或页帧，同理。</li>
+</ul>
+<p>实际上的访问操作仍在物理内存上进行，所以需要对虚拟内存和物理内存建立映射，这个过程称为 <strong>地址翻译</strong> 。</p>
+<div class="story post-story"><h2 id="虚拟页的生命周期"><a href="#虚拟页的生命周期" class="headerlink" title="虚拟页的生命周期"></a>虚拟页的生命周期</h2><p>在任意时刻，一个进程的虚拟地址空间中的所有虚拟页（VP）可以被划分为三个不相交的子集。</p>
+<ul>
+<li>未分配 &#x3D; VM系统还未分配（或创建）的页。未分配的块没有数据与之关联，因此不占用任何磁盘空间。</li>
+<li>分配 &#x3D; 虚拟地址与磁盘上的物理地址建立映射<ul>
+<li>未缓存 → 缺页（page fault），选择牺牲页（按需页面调度，本篇笔记称为按需加载）。数据存储在磁盘上的 <strong>交换空间（Swap Space）</strong> 中。</li>
+<li>缓存 &#x3D; 磁盘上的数据（物理页）加载到主存。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h3 id="虚拟内存的高效性"><a href="#虚拟内存的高效性" class="headerlink" title="虚拟内存的高效性"></a>虚拟内存的高效性</h3><ul>
+<li>按需分配：程序启动时未分配。第一次访问一个虚拟地址时才分配。</li>
+<li>按需加载：程序启动时不加载代码页，只在第一次访问时（读&#x2F;写）才通过 page fault 加载。</li>
+</ul>
+<p>虚拟内存到磁盘的访问是昂贵的，因此<br>  DRAM 全相联 → 操作系统可以自由选择把某个虚拟页扔到任何物理页框里<br> （组相联只能同组，更严苛是一一映射）<br>（因为可以自由选择物理页框，OS 就能使用最优的页面替换算法，把最“冷”的虚拟页换出去，让最“热”的工作集留在 DRAM 中，从而避免大量昂贵的磁盘访问）。<br>由于局部性原理，昂贵的磁盘访问 + 按需加载最终是高效的。</p>
+</blockquote>
+</div><div class="story post-story"><h2 id="地址翻译"><a href="#地址翻译" class="headerlink" title="地址翻译"></a>地址翻译</h2><p>虚拟地址在传送到主存前经过 <strong>MMU（memory manage unit）</strong> 翻译成物理地址。</p>
+<ul>
+<li>页表 &#x3D; PTE（page table entry，页表条目）的数组</li>
+<li>PTE  &#x3D; valid bits + 物理地址（主存 or 磁盘）&#x2F;下一级页表PTE位置</li>
+<li>虚拟地址 &#x3D; VPN + VPO，其中 VPN 是页表中 PTE 的位置。<ul>
+<li>VPN &#x3D; TLBT + TLBI</li>
+<li>VPN &#x3D; VPN1 + VPN2 + ···</li>
+</ul>
+</li>
+<li>物理地址 &#x3D; PPN + VPO<ul>
+<li>PPN &#x3D; CT</li>
+<li>PPO &#x3D; CI + CO</li>
+</ul>
+</li>
+<li>PTBR（page table base register）指向内存中的页表，本身位于cpu中。</li>
+</ul>
+<p><strong>流程</strong>：</p>
+<ol>
+<li>CPU 产生虚拟地址 VA，MMU 先访问TLB，不命中则进行页表遍历。使用 PTBR 指向的基地址，通过 VPN 访问 L1 中缓存的页表条目，一级级直到内存中的页表。若不命中，在磁盘中加载物理页到主存中使 PTE 合法，重新启动指令。</li>
+<li>此过程中 <code>PPO = VPO</code> 恒成立，一开始就将其取出并在 Cache 中查找 PA，直到返回 CT 进行检查。</li>
+</ol>
+<blockquote>
+<h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><p>可以方便地在 PTE 中增加许可位来实现对内存访问的限制。违反将会触发段错误（segmentation fault）。</p>
+</blockquote>
+<h3 id="优化："><a href="#优化：" class="headerlink" title="优化："></a>优化：</h3><ol>
+<li>在高速缓存中缓存页表条目；</li>
+<li>MMU 内置 TLB, TLBT + TLBI &#x3D; VPN（若TLB 有 2^t 个组，TLBI 就为 t 位）</li>
+<li>多级页表（只有一级页表才需要在主存中，二级可以根据虚拟内存创建或是持空，只有最常使用的才缓存在主存中）对应 VPN 被分成多块。由于 TLB，访问多级页表的开销可承受。</li>
+</ol>
+<blockquote>
+<p>注意：高速缓存 Cache 访问通常用 <strong>物理地址</strong> 而不是虚拟地址，因为这样能避免多进程共享同一物理页时带来的冲突，也能避免权限检查在 Cache 前额外处理。使用物理地址更简单、安全、通用。</p>
+</blockquote>
+
+</div>
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
       
-        <div>
-          <a class='readmore' href='/InDoor/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-05T18:19:43+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>本页文档最后更新于：2025年12月5日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://happy-door.github.io/2025/12/02/waline-darkmode/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Happy Door">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Happy Door">
-    <meta itemprop="description" content="">
-  </span>
+          
   
   
   
+  <div class="new-meta-item meta-tags"><a class="tag" href="/InDoor/tags/%E9%BB%98%E8%AE%A4%E6%A0%87%E7%AD%BE/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>默认标签</p></a></div>
+  <span hidden itemprop="keywords">默认标签</span>
+  
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://happy-door.github.io/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/&title=虚拟内存 - Happy Door&summary=本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。"
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://happy-door.github.io/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/&title=虚拟内存 - Happy Door&summary=本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。"
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://happy-door.github.io/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/&title=虚拟内存 - Happy Door&summary=本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。"
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/InDoor/2025/12/02/waline-darkmode/'>
+          <p class='title'>waline暗黑模式字体颜色调整<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>问题：暗黑模式下waline评论与背景颜色接近，难以看清。
+本篇记录如何在 Volantis 中覆盖 waline 的暗黑模式评论字体颜色。
+
+
+waline 的评论正文颜色加载自（cdn.ym...</p>
+        </a>
+      
+    </div>
+  
+  <!-- 文章推荐 -->
+  
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/InDoor/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/InDoor/2025/12/02/waline-darkmode/"  itemprop="url">
-        waline暗黑模式字体颜色调整
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      <p>问题：暗黑模式下waline评论与背景颜色接近，难以看清。</p>
-<p>本篇记录如何在 Volantis 中覆盖 waline 的暗黑模式评论字体颜色。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' target="_blank" rel="noopener" href='https://github.com/Happy-Door/InDoor'><img src='/InDoor/images/logo.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="https://schema.org.cn/Person">
-            <meta itemprop="image" content="/InDoor/images/logo.jpg">
-            <meta itemprop="name" content="Happy Door">
-            <meta itemprop="url" content="https://github.com/Happy-Door/InDoor">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-12-02T11:54:35+08:00">2025-12-02</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/InDoor/categories/%E9%80%8D%E9%81%A5%E9%97%A8%E6%8C%81%E7%BB%AD%E8%A3%85%E4%BF%AE%E4%B8%AD/">逍遥门持续装修中</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/InDoor/categories/%E9%80%8D%E9%81%A5%E9%97%A8%E6%8C%81%E7%BB%AD%E8%A3%85%E4%BF%AE%E4%B8%AD/" itemprop="url"><span itemprop="name">逍遥门持续装修中</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/InDoor/2025/12/02/waline-darkmode/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
+    <div id="layoutHelper-comments"></div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://happy-door.github.io/2025/11/29/hexo写文章/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Happy Door">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Happy Door">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/InDoor/2025/11/29/hexo%E5%86%99%E6%96%87%E7%AB%A0/"  itemprop="url">
-        hexo写文章
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Hexo 新建文章时会自动复制 scaffolds&#x2F;post.md 的内容作为文章开头。
-如果你执行：
-1hexo new post &quot;hexo写文章&quot;
-
-它会生成：
-1source/_posts/hexo写文章.md
-
-并将 scaffolds&#x2F;post.md 的内容复制进去。
-文章开头有一个 Front-Matter（YAML 头部），用于告诉 H...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' target="_blank" rel="noopener" href='https://github.com/Happy-Door/InDoor'><img src='/InDoor/images/logo.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="https://schema.org.cn/Person">
-            <meta itemprop="image" content="/InDoor/images/logo.jpg">
-            <meta itemprop="name" content="Happy Door">
-            <meta itemprop="url" content="https://github.com/Happy-Door/InDoor">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-11-29T20:57:10+08:00">2025-11-29</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/InDoor/categories/%E6%96%B0%E5%BC%9F%E5%AD%90%E8%BF%9B%EF%BC%81/">新弟子进！</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/InDoor/categories/%E6%96%B0%E5%BC%9F%E5%AD%90%E8%BF%9B%EF%BC%81/" itemprop="url"><span itemprop="name">新弟子进！</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/InDoor/2025/11/29/hexo%E5%86%99%E6%96%87%E7%AB%A0/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://happy-door.github.io/2025/05/21/gitguideline/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Happy Door">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Happy Door">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/InDoor/2025/05/21/gitguideline/"  itemprop="url">
-        Git功法入门
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        前言本篇旨在介绍逍遥门日常生活中常用的几个git操作，帮助不熟悉git的朋友快速上手，顺便给某些总是记不住这些操作的家伙（逃）充当备忘录。
-准备工作Git是什么？Git 是一个开源的分布式版本控制系统，用于跟踪文件和目录的更改。Git 通过记录文件的变更历史，允许开发者在不同的时间点查看文件的版本，并且可以轻松地回溯到任何特定的版本。Git 也广泛用于多人合作构建项目（比如我们的happy ...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' target="_blank" rel="noopener" href='https://github.com/Happy-Door/InDoor'><img src='/InDoor/images/logo.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="https://schema.org.cn/Person">
-            <meta itemprop="image" content="/InDoor/images/logo.jpg">
-            <meta itemprop="name" content="Happy Door">
-            <meta itemprop="url" content="https://github.com/Happy-Door/InDoor">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-05-21T00:00:00+08:00">2025-05-21</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/InDoor/categories/%E6%96%B0%E5%BC%9F%E5%AD%90%E8%BF%9B%EF%BC%81/">新弟子进！</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/InDoor/categories/%E6%96%B0%E5%BC%9F%E5%AD%90%E8%BF%9B%EF%BC%81/" itemprop="url"><span itemprop="name">新弟子进！</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/InDoor/2025/05/21/gitguideline/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://happy-door.github.io/2025/04/08/website-build/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Happy Door">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Happy Door">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/InDoor/2025/04/08/website-build/"  itemprop="url">
-        在GitHub上架设博客网站
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        简单介绍Github提供了Github Pages来帮助我们架设静态网站，Github Pages是一项免费的静态文件部署服务, 通过它可以把生成的静态网站托管在Github上。本篇博客不负责介绍其他搭建网站方式和各自的优劣，我们直接开始吧。
-Step 1：注册一个github账号访问Github并点击 sign up 进行注册，需要提供用户名、密码和邮箱，不需要手机号。用户名不允许重复，顺...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' target="_blank" rel="noopener" href='https://github.com/Happy-Door/InDoor'><img src='/InDoor/images/logo.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="https://schema.org.cn/Person">
-            <meta itemprop="image" content="/InDoor/images/logo.jpg">
-            <meta itemprop="name" content="Happy Door">
-            <meta itemprop="url" content="https://github.com/Happy-Door/InDoor">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-08T00:00:00+08:00">2025-04-08</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/InDoor/categories/github/">github</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/InDoor/categories/github/" itemprop="url"><span itemprop="name">github</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/InDoor/2025/04/08/website-build/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-	
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="https://schema.org.cn/WPSideBar">
   
@@ -3169,166 +2988,6 @@ Step 1：注册一个github账号访问Github并点击 sign up 进行注册，�
     
     
       
-<section class="widget text desktop mobile">
-  
-  <header>
-    
-      <i class="fa-brands fa-qq fa-fw" aria-hidden="true"></i><span class='name'>加入 QQ 群</span>
-    
-  </header>
-
-
-  <div class='content'>
-    
-      <p>如果你在修炼中遇到困境，请到 <a target="_blank" rel="noopener" href="https://github.com/Happy-Door/InDoor/issues">Github Issues</a> 或者 <a href="/blogs/#comments">留言板</a> 进行反馈</p>
-
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/InDoor/categories/github/" href="/InDoor/categories/github/"
-            active-action="action-InDoorcategoriesgithub"
-            ><div class='name'>github</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/InDoor/categories/%E6%96%B0%E5%BC%9F%E5%AD%90%E8%BF%9B%EF%BC%81/" href="/InDoor/categories/%E6%96%B0%E5%BC%9F%E5%AD%90%E8%BF%9B%EF%BC%81/"
-            active-action="action-InDoorcategoriesE696B0E5BC9FE5AD90E8BF9BEFBC81"
-            ><div class='name'>新弟子进！</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/InDoor/categories/%E7%AC%94%E8%AE%B0/" href="/InDoor/categories/%E7%AC%94%E8%AE%B0/"
-            active-action="action-InDoorcategoriesE7AC94E8AEB0"
-            ><div class='name'>笔记</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/InDoor/categories/%E9%80%8D%E9%81%A5%E9%97%A8%E6%8C%81%E7%BB%AD%E8%A3%85%E4%BF%AE%E4%B8%AD/" href="/InDoor/categories/%E9%80%8D%E9%81%A5%E9%97%A8%E6%8C%81%E7%BB%AD%E8%A3%85%E4%BF%AE%E4%B8%AD/"
-            active-action="action-InDoorcategoriesE9808DE981A5E997A8E68C81E7BBADE8A385E4BFAEE4B8AD"
-            ><div class='name'>逍遥门持续装修中</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-<section class="widget grid desktop mobile">
-  
-  <header>
-    
-      <i class="fa-solid fa-map-signs fa-fw" aria-hidden="true"></i><span class='name'>分类导航</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="grid navigation fixed">
-      
-        <a class="flat-box" href="/InDoor/README.md/"
-          
-          
-          active-action="action-InDoorREADMEmd">
-          
-            <i class="fa-solid fa-question-circle fa-fw" aria-hidden="true"></i>
-          
-          常见问题
-        </a>
-      
-        <a class="flat-box" href="/InDoor/blogs/"
-          
-          
-          active-action="action-InDoorblogs">
-          
-            <i class="fa-solid fa-play-circle fa-fw" aria-hidden="true"></i>
-          
-          示例博客
-        </a>
-      
-        <a class="flat-box" href="/InDoor/README.md/"
-          
-          
-          active-action="action-InDoorREADMEmd">
-          
-            <i class="fa-solid fa-handshake fa-fw" aria-hidden="true"></i>
-          
-          特别感谢
-        </a>
-      
-        <a class="flat-box" href="/InDoor/blogs/"
-          
-          
-          active-action="action-InDoorblogs">
-          
-            <i class="fa-solid fa-file-alt fa-fw" aria-hidden="true"></i>
-          
-          测试博文
-        </a>
-      
-        <a class="flat-box" href="https://github.com/Happy-Door/hexo-theme-volantis"
-          
-            rel="external nofollow noopener noreferrer"
-          
-          
-            target="_blank"
-          
-          active-action="action-https:githubcomHappy-Doorhexo-theme-volantis">
-          
-            <i class="fa-solid fa-file-code fa-fw" aria-hidden="true"></i>
-          
-          主题源码
-        </a>
-      
-        <a class="flat-box" href="/InDoor/blogs/"
-          
-            rel="external nofollow noopener noreferrer"
-          
-          
-            target="_blank"
-          
-          active-action="action-InDoorblogs">
-          
-            <i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i>
-          
-          更新日志
-        </a>
-      
-    </div>
-  </div>
-</section>
-
     
   
 
@@ -3337,20 +2996,19 @@ Step 1：注册一个github账号访问Github并点击 sign up 进行注册，�
 
   
   
-<section class="widget text desktop mobile">
+
+
+<section class="widget toc-wrapper desktop mobile" id="toc-div" >
   
   <header>
     
-      <a href='/blogs/'><i class="fa-solid fa-plus fa-fw" aria-hidden="true"></i><span class='name'>社区活动</span></a>
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
   <div class='content'>
-    
-      <p><strong>都来听epic！</strong></p>
-
-    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E9%A1%B5%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.</span> <span class="toc-text">虚拟页的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%9A%84%E9%AB%98%E6%95%88%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">虚拟内存的高效性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%BF%BB%E8%AF%91"><span class="toc-number">2.</span> <span class="toc-text">地址翻译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">安全性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">优化：</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3362,6 +3020,7 @@ Step 1：注册一个github账号访问Github并点击 sign up 进行注册，�
   
   <!-- Custom Files side end -->
 </aside>
+
 
 
         </div>
@@ -4680,7 +4339,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://happy-door.github.io/InDoor/","name":"Happy Door"}},{"@type":"ListItem","position":2,"item":{"@id":"https://happy-door.github.io/InDoor/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"https://happy-door.github.io/InDoor/archives/2025/","name":"2025年"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","description":""},"publisher":{"@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://happy-door.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/"},"publisher":{"@type":"Organization","name":"Happy Door","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://happy-door.github.io/InDoor/","name":"Happy Door"}},{"@type":"ListItem","position":2,"item":{"@id":"https://happy-door.github.io/InDoor/categories/笔记/","name":"笔记"}},{"@type":"ListItem","position":3,"item":{"@id":"https://happy-door.github.io/InDoor/2025/12/05/虚拟内存/","name":"虚拟内存"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","description":""},"publisher":{"@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://happy-door.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"虚拟内存","description":"本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://happy-door.github.io/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/"},"publisher":{"@type":"Organization","name":"Happy Door","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://happy-door.github.io/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/","wordCount":28,"datePublished":"2025-12-05T10:18:55.000Z","dateModified":"2025-12-05T10:19:43.735Z","articleSection":"笔记","keywords":"默认标签","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
