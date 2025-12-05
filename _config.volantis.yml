@@ -42,7 +42,7 @@ search:
   service: hexo
 
 cover:
-  # height_scheme: full # full, half
+  height_scheme: full # full, half
   title: 'Happy Door'
   subtitle: '天下第一逍遥门'
   background: https://gcore.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg
@@ -390,15 +390,21 @@ custom_css:
   #   effect: [shadow] # [shadow, floatable, blur]
   fontfamily:
     logofont:
-      fontfamily: 'Dosis, "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
+      fontfamily: 'Futura, Pacifico-Regular, Dosis, "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
+      name: 'Futura'
+      url: volantis-static/media/fonts/Futura/Futura.ttc # fonts/Pacifico-Regular.ttf
+      weight: normal
+      style: normal
+    bodyfont:
+      fontfamily: '"Microsoft YaHei", Dosis, Helvetica, Arial'
       name: 'Dosis'
       url: volantis-static/media/fonts/Dosis/Dosis-Medium.ttf
       weight: normal
       style: normal
-    bodyfont:
-      fontfamily: 'Dosis, "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
-      name: 'Dosis'
-      url: volantis-static/media/fonts/Dosis/Dosis-Medium.ttf
+    codefont:
+      fontfamily: 'Monaco, Menlo, UbuntuMono'
+      name: 'Monaco'
+      url: volantis-static/media/fonts/Monaco/Monaco.ttf # https://gcore.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf
       weight: normal
       style: normal
 
