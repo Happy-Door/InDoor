@@ -10,9 +10,14 @@ tags:
 toc: true
 comments: true
 description: ""
+plugins:
+  - mathjax # 如需渲染数学公式
 # references:
 #   - title: 
 #     url:
 # copyright:
 #   type: type1
 ---
+
+// 简介
+<!-- more -->

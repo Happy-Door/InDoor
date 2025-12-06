@@ -26,3 +26,10 @@ source/_posts/hexo写文章.md
 并将 scaffolds/post.md 的内容复制进去。
 
 文章开头有一个 Front-Matter（YAML 头部），用于告诉 Hexo 和主题这篇文章的各种元数据。保留并更改你需要的部分。
+
+---
+当你想呈现一个pdf文件的时候，请先确保它放在`source/pdf`文件夹下，然后执行：
+```
+hexo new pdf "文件名"
+```
+其余实现同上。

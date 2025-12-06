@@ -10,6 +10,8 @@ description: ''
 date: 2025-12-06 14:57:44
 author: 土土
 updated:
+plugins:
+  - mathjax
 ---
 本篇笔记记录 Linux 进程的虚拟内存体系结构，详细阐述了内核虚拟内存和进程虚拟内存的区域划分、数据结构以及它们在内存管理中的作用。
 <!-- more -->
