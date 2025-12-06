@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://happy-door.github.io/2025/12/05/虚拟内存/"/>
+  <link rel="canonical" href="https://happy-door.github.io/2025/12/06/vm2/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -35,19 +35,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>虚拟内存——与物理内存建立映射：页 - Happy Door</title>
+  <title>虚拟内存——Linux 进程虚拟内存布局概述 - Happy Door</title>
   <meta name="keywords" content="默认标签,undefined">
   <meta desc name="description" content="Happy Door - John Doe - Happy Door">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="虚拟内存——与物理内存建立映射：页">
-<meta property="og:url" content="https://happy-door.github.io/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/index.html">
+<meta property="og:title" content="虚拟内存——Linux 进程虚拟内存布局概述">
+<meta property="og:url" content="https://happy-door.github.io/2025/12/06/VM2/index.html">
 <meta property="og:site_name" content="Happy Door">
-<meta property="og:description" content="为了更好地共享同一块物理内存的数据 &amp; 简化编程模型，虚拟内存（Virtual Memory） 应运而生。虚拟内存为每个进程提供独立、连续、逻辑统一的地址空间。实际访问发生在物理内存 + 磁盘之间，由操作系统自动管理。本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。">
+<meta property="og:description" content="本篇笔记记录 Linux 进程的虚拟内存体系结构，详细阐述了内核虚拟内存和进程虚拟内存的区域划分、数据结构以及它们在内存管理中的作用。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-12-05T10:18:55.000Z">
-<meta property="article:modified_time" content="2025-12-05T10:33:14.722Z">
+<meta property="article:published_time" content="2025-12-06T06:57:44.000Z">
+<meta property="article:modified_time" content="2025-12-06T07:16:35.591Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="默认标签">
 <meta name="twitter:card" content="summary">
@@ -2257,7 +2257,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/InDoor/',
     debug: false,
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1764930903500),
+    lastupdate: new Date(1765005828134),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2695,7 +2695,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://happy-door.github.io/2025/12/05/虚拟内存/">
+  <link itemprop="mainEntityOfPage" href="https://happy-door.github.io/2025/12/06/VM2/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Happy Door">
   </span>
@@ -2716,7 +2716,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        虚拟内存——与物理内存建立映射：页
+        虚拟内存——Linux 进程虚拟内存布局概述
       </h1>
       <div class='new-meta-box'>
         
@@ -2752,10 +2752,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-12-05T18:18:55+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-12-06T14:57:44+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2025年12月5日</p>
+    <p>发布于：2025年12月6日</p>
   </a>
 </div>
 
@@ -2771,63 +2771,84 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>为了更好地共享同一块物理内存的数据 &amp; 简化编程模型，<strong>虚拟内存（Virtual Memory）</strong> 应运而生。<br>虚拟内存为每个进程提供独立、连续、逻辑统一的地址空间。实际访问发生在物理内存 + 磁盘之间，由操作系统自动管理。<br>本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。</p>
+    <p>本篇笔记记录 Linux 进程的虚拟内存体系结构，详细阐述了内核虚拟内存和进程虚拟内存的区域划分、数据结构以及它们在内存管理中的作用。</p>
 <span id="more"></span>
-
-<h1 id="与物理内存建立映射：页"><a href="#与物理内存建立映射：页" class="headerlink" title="与物理内存建立映射：页"></a>与物理内存建立映射：页</h1><p>概念上，内存是一块连续字节数组，为了方便访问和存储，把地址空间进行层级划分：</p>
-<ul>
-<li>把虚拟内存划分为若干大小为 P 字节的块，称为虚拟页（VP）</li>
-<li>物理页（PP）或页帧，同理。</li>
-</ul>
-<p>实际上的访问操作仍在物理内存上进行，所以需要对虚拟内存和物理内存建立映射，这个过程称为 <strong>地址翻译</strong> 。</p>
-<div class="story post-story"><h2 id="虚拟页的生命周期"><a href="#虚拟页的生命周期" class="headerlink" title="虚拟页的生命周期"></a>虚拟页的生命周期</h2><p>在任意时刻，一个进程的虚拟地址空间中的所有虚拟页（VP）可以被划分为三个不相交的子集。</p>
-<ul>
-<li>未分配 &#x3D; VM系统还未分配（或创建）的页。未分配的块没有数据与之关联，因此不占用任何磁盘空间。</li>
-<li>分配 &#x3D; 虚拟地址与磁盘上的物理地址建立映射<ul>
-<li>未缓存 → 缺页（page fault），选择牺牲页（按需页面调度，本篇笔记称为按需加载）。数据存储在磁盘上的 <strong>交换空间（Swap Space）</strong> 中。</li>
-<li>缓存 &#x3D; 磁盘上的数据（物理页）加载到主存。</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<h3 id="虚拟内存的高效性"><a href="#虚拟内存的高效性" class="headerlink" title="虚拟内存的高效性"></a>虚拟内存的高效性</h3><ul>
-<li>按需分配：程序启动时未分配。第一次访问一个虚拟地址时才分配。</li>
-<li>按需加载：程序启动时不加载代码页，只在第一次访问时（读&#x2F;写）才通过 page fault 加载。</li>
-</ul>
-<p>虚拟内存到磁盘的访问是昂贵的，因此<br>  DRAM 全相联 → 操作系统可以自由选择把某个虚拟页扔到任何物理页框里<br> （组相联只能同组，更严苛是一一映射）<br>（因为可以自由选择物理页框，OS 就能使用最优的页面替换算法，把最“冷”的虚拟页换出去，让最“热”的工作集留在 DRAM 中，从而避免大量昂贵的磁盘访问）。<br>由于局部性原理，昂贵的磁盘访问 + 按需加载最终是高效的。</p>
-</blockquote>
-</div><div class="story post-story"><h2 id="地址翻译"><a href="#地址翻译" class="headerlink" title="地址翻译"></a>地址翻译</h2><p>虚拟地址在传送到主存前经过 <strong>MMU（memory manage unit）</strong> 翻译成物理地址。</p>
-<ul>
-<li>页表 &#x3D; PTE（page table entry，页表条目）的数组</li>
-<li>PTE  &#x3D; valid bits + 物理地址（主存 or 磁盘）&#x2F;下一级页表PTE位置</li>
-<li>虚拟地址 &#x3D; VPN + VPO，其中 VPN 是页表中 PTE 的位置。<ul>
-<li>VPN &#x3D; TLBT + TLBI</li>
-<li>VPN &#x3D; VPN1 + VPN2 + ···</li>
-</ul>
-</li>
-<li>物理地址 &#x3D; PPN + VPO<ul>
-<li>PPN &#x3D; CT</li>
-<li>PPO &#x3D; CI + CO</li>
-</ul>
-</li>
-<li>PTBR（page table base register）指向内存中的页表，本身位于cpu中。</li>
-</ul>
-<p><strong>流程</strong>：</p>
+<div class="story post-story"><h2 id="Linux-进程虚拟内存布局概述"><a href="#Linux-进程虚拟内存布局概述" class="headerlink" title="Linux 进程虚拟内存布局概述"></a>Linux 进程虚拟内存布局概述</h2><p>Linux 系统为每个<strong>进程</strong>都创建了一个<strong>独立的虚拟内存空间</strong>。这个虚拟地址空间通常是 $0$ 到 $2^{64}-1$ (对于 64 位系统) 或 $0$ 到 $2^{32}-1$ (对于 32 位系统)。分为两个部分</p>
 <ol>
-<li>CPU 产生虚拟地址 VA，MMU 先访问TLB，不命中则进行页表遍历。使用 PTBR 指向的基地址，通过 VPN 访问 L1 中缓存的页表条目，一级级直到内存中的页表。若不命中，在磁盘中加载物理页到主存中使 PTE 合法，重新启动指令。</li>
-<li>此过程中 <code>PPO = VPO</code> 恒成立，一开始就将其取出并在 Cache 中查找 PA，直到返回 CT 进行检查。</li>
+<li><strong>内核虚拟内存 (Kernel Virtual Memory)</strong>：位于虚拟地址空间的高位，供操作系统内核使用。</li>
+<li><strong>进程虚拟内存 (Process Virtual Memory)</strong>：通常位于虚拟地址空间的低位，包含用户程序运行所需的数据和代码。</li>
 </ol>
-<blockquote>
-<h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><p>可以方便地在 PTE 中增加许可位来实现对内存访问的限制。违反将会触发段错误（segmentation fault）。</p>
+</div><div class="story post-story"><h2 id="内核虚拟内存区域"><a href="#内核虚拟内存区域" class="headerlink" title="内核虚拟内存区域"></a>内核虚拟内存区域</h2><p>这部分位于虚拟地址空间的高位，供内核使用，并且<strong>其内容对所有进程是“一样”或“相关”的</strong>。</p>
+<h3 id="1-对每个进程都不同（私有部分）"><a href="#1-对每个进程都不同（私有部分）" class="headerlink" title="1. 对每个进程都不同（私有部分）"></a>1. 对每个进程都不同（私有部分）</h3><ul>
+<li><strong>与进程相关的数据结构</strong>：<ul>
+<li><strong>页表</strong>：记录了当前进程<strong>虚拟地址到物理地址</strong>的映射关系，<strong>每个进程都有自己独立的页表</strong>。</li>
+<li><strong><code>task</code> 结构</strong>：进程描述符，包含了进程 ID (PID)、状态、打开的文件等关键信息。</li>
+<li><strong><code>mm</code> 结构</strong>：内存管理结构，描述了进程的<strong>整个虚拟地址空间布局</strong>（如各内存段的起始&#x2F;结束地址）。</li>
+<li><strong>内核栈 (Kernel Stack)</strong>：进程<strong>从用户态切换到内核态</strong>（如进行系统调用）时使用的栈，与用户栈是分开的。</li>
+</ul>
+</li>
+</ul>
+<p>任务结构 task_struct 中的一个条目 mm 指向 mm_struct（描述虚拟内存的当前状态），其中的 pgd 指向第一级页表的基址， mmap 指向链表 vm_area_structs。<br>每个 vm_area_structs 描述当前虚拟地址空间的一个区域&#x2F;段。</p>
+<ul>
+<li>vm_end, vm_start: 指向这个区域的起始与终点。</li>
+<li>vm_prot: 所有页的读写权限。</li>
+<li>vm_flags: 是否共享。</li>
+<li>vm_next: 链表中下一个区域。</li>
+</ul>
+<p>缺页异常处理中，未分配 -&gt; 段错误；权限错误 -&gt; 保护异常；未缓存 -&gt; 按需页面调度。</p>
+<h3 id="2-对每个进程都一样（共享部分）"><a href="#2-对每个进程都一样（共享部分）" class="headerlink" title="2. 对每个进程都一样（共享部分）"></a>2. 对每个进程都一样（共享部分）</h3><p>这部分包含内核代码和数据，<strong>所有进程的虚拟地址都映射到相同的物理内存地址</strong>，实现了对内核资源的共享访问。</p>
+<ul>
+<li><strong>物理内存</strong>：用于映射到实际的物理内存页。</li>
+<li><strong>内核代码和数据</strong>：包括内核的可执行代码和全局数据结构。</li>
+</ul>
+</div><div class="story post-story"><h2 id="进程虚拟内存区域"><a href="#进程虚拟内存区域" class="headerlink" title="进程虚拟内存区域"></a>进程虚拟内存区域</h2><p>这部分是<strong>每个进程独有的</strong>，包含了用户程序执行的关键组成部分。地址通常从低位开始向上增长。</p>
+<table>
+<thead>
+<tr>
+<th align="left">区域名称</th>
+<th align="left">地址</th>
+<th align="left">作用及特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>用户栈 (User Stack)</strong></td>
+<td align="left">地址较高，由 <code>%rsp</code> 指针控制</td>
+<td align="left">存放<strong>局部变量</strong>、<strong>函数参数</strong>、<strong>返回地址</strong>等。<strong>从高地址向低地址增长</strong>。</td>
+</tr>
+<tr>
+<td align="left"><strong>共享库的内存映射区域</strong></td>
+<td align="left">堆上方</td>
+<td align="left">存放通过 <strong><code>mmap</code></strong> 系统调用映射的文件或<strong>共享库</strong>（如 <code>.so</code> 文件）。</td>
+</tr>
+<tr>
+<td align="left"><strong>运行时堆 (Heap)</strong></td>
+<td align="left">紧邻未初始化数据段上方，由 <code>brk</code> 指针控制</td>
+<td align="left">存放程序运行时<strong>动态分配</strong>的内存（如使用 <strong><code>malloc</code></strong> 或 <strong><code>new</code></strong>）。<strong>从低地址向高地址增长</strong>。</td>
+</tr>
+<tr>
+<td align="left"><strong>未初始化数据段 (.bss)</strong></td>
+<td align="left">紧邻已初始化数据段上方</td>
+<td align="left">存放程序中<strong>未初始化</strong>的全局变量和静态变量。在程序加载时，操作系统将其初始化为 <strong>0</strong>。</td>
+</tr>
+<tr>
+<td align="left"><strong>已初始化数据段 (.data)</strong></td>
+<td align="left">紧邻代码段上方</td>
+<td align="left">存放程序中<strong>已初始化</strong>的全局变量和静态变量。</td>
+</tr>
+<tr>
+<td align="left"><strong>代码段 (.text)</strong></td>
+<td align="left">$0$ (或靠近 $0$ 的低地址)</td>
+<td align="left">存放<strong>可执行的机器指令</strong>。通常是<strong>只读</strong>的，以防止程序意外修改自身代码。</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>$0\text{x}4000000$</strong>: 常见的 64 位 Linux ELF 可执行文件的<strong>基地址</strong>，代码段通常从这里开始。<blockquote>
+<p>Executable and Linkable Format, 是 Linux&#x2F;Unix 系统中使用的可执行文件格式标准</p>
 </blockquote>
-<h3 id="优化："><a href="#优化：" class="headerlink" title="优化："></a>优化：</h3><ol>
-<li>在高速缓存中缓存页表条目；</li>
-<li>MMU 内置 TLB, TLBT + TLBI &#x3D; VPN（若TLB 有 2^t 个组，TLBI 就为 t 位）</li>
-<li>多级页表（只有一级页表才需要在主存中，二级可以根据虚拟内存创建或是持空，只有最常使用的才缓存在主存中）对应 VPN 被分成多块。由于 TLB，访问多级页表的开销可承受。</li>
-</ol>
-<blockquote>
-<p>注意：高速缓存 Cache 访问通常用 <strong>物理地址</strong> 而不是虚拟地址，因为这样能避免多进程共享同一物理页时带来的冲突，也能避免权限检查在 Cache 前额外处理。使用物理地址更简单、安全、通用。</p>
-</blockquote>
+</li>
+<li><strong><code>brk</code></strong>: <strong>堆的边界指针</strong>。<code>malloc</code> 分配堆内存时会移动 <code>brk</code>。</li>
+<li><strong><code>%rsp</code></strong>: <strong>栈指针寄存器</strong>。指向当前栈帧的顶部，栈向低地址增长。</li>
+</ul>
 
 </div>
   </div>
@@ -2853,10 +2874,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-05T18:33:14+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-06T15:16:35+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：2025年12月5日</p>
+    <p>本页文档最后更新于：2025年12月6日</p>
   </a>
 </div>
 
@@ -2882,7 +2903,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://happy-door.github.io/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/&title=虚拟内存——与物理内存建立映射：页 - Happy Door&summary=为了更好地共享同一块物理内存的数据 &amp; 简化编程模型，虚拟内存（Virtual Memory） 应运而生。虚拟内存为每个进程提供独立、连续、逻辑统一的地址空间。实际访问发生在物理内存 + 磁盘之间，由操作系统自动管理。本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://happy-door.github.io/2025/12/06/VM2/&title=虚拟内存——Linux 进程虚拟内存布局概述 - Happy Door&summary=本篇笔记记录 Linux 进程的虚拟内存体系结构，详细阐述了内核虚拟内存和进程虚拟内存的区域划分、数据结构以及它们在内存管理中的作用。"
           
           >
           
@@ -2894,7 +2915,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://happy-door.github.io/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/&title=虚拟内存——与物理内存建立映射：页 - Happy Door&summary=为了更好地共享同一块物理内存的数据 &amp; 简化编程模型，虚拟内存（Virtual Memory） 应运而生。虚拟内存为每个进程提供独立、连续、逻辑统一的地址空间。实际访问发生在物理内存 + 磁盘之间，由操作系统自动管理。本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://happy-door.github.io/2025/12/06/VM2/&title=虚拟内存——Linux 进程虚拟内存布局概述 - Happy Door&summary=本篇笔记记录 Linux 进程的虚拟内存体系结构，详细阐述了内核虚拟内存和进程虚拟内存的区域划分、数据结构以及它们在内存管理中的作用。"
           
           >
           
@@ -2906,7 +2927,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://happy-door.github.io/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/&title=虚拟内存——与物理内存建立映射：页 - Happy Door&summary=为了更好地共享同一块物理内存的数据 &amp; 简化编程模型，虚拟内存（Virtual Memory） 应运而生。虚拟内存为每个进程提供独立、连续、逻辑统一的地址空间。实际访问发生在物理内存 + 磁盘之间，由操作系统自动管理。本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://happy-door.github.io/2025/12/06/VM2/&title=虚拟内存——Linux 进程虚拟内存布局概述 - Happy Door&summary=本篇笔记记录 Linux 进程的虚拟内存体系结构，详细阐述了内核虚拟内存和进程虚拟内存的区域划分、数据结构以及它们在内存管理中的作用。"
           
           >
           
@@ -2940,13 +2961,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class="prev-next">
       
       
-        <a class='next' href='/InDoor/2025/12/02/waline-darkmode/'>
-          <p class='title'>waline暗黑模式字体颜色调整<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>问题：暗黑模式下waline评论与背景颜色接近，难以看清。
-本篇记录如何在 Volantis 中覆盖 waline 的暗黑模式评论字体颜色。
-
-
-waline 的评论正文颜色加载自（cdn.ym...</p>
+        <a class='next' href='/InDoor/2025/12/05/VM1/'>
+          <p class='title'>虚拟内存——与物理内存建立映射：页<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>为了更好地共享同一块物理内存的数据 &amp; 简化编程模型，虚拟内存（Virtual Memory） 应运而生。虚拟内存为每个进程提供独立、连续、逻辑统一的地址空间。实际访问发生在物理内存 +...</p>
         </a>
       
     </div>
@@ -2965,7 +2982,7 @@ waline 的评论正文颜色加载自（cdn.ym...</p>
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/InDoor/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/index.html#comments">
+      <meta itemprop="discussionUrl" content="/InDoor/2025/12/06/VM2/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -3007,7 +3024,7 @@ waline 的评论正文颜色加载自（cdn.ym...</p>
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E9%A1%B5%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.</span> <span class="toc-text">虚拟页的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%9A%84%E9%AB%98%E6%95%88%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">虚拟内存的高效性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%BF%BB%E8%AF%91"><span class="toc-number">2.</span> <span class="toc-text">地址翻译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">安全性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">优化：</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">Linux 进程虚拟内存布局概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E6%A0%B8%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F"><span class="toc-number">2.</span> <span class="toc-text">内核虚拟内存区域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AF%B9%E6%AF%8F%E4%B8%AA%E8%BF%9B%E7%A8%8B%E9%83%BD%E4%B8%8D%E5%90%8C%EF%BC%88%E7%A7%81%E6%9C%89%E9%83%A8%E5%88%86%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">1. 对每个进程都不同（私有部分）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AF%B9%E6%AF%8F%E4%B8%AA%E8%BF%9B%E7%A8%8B%E9%83%BD%E4%B8%80%E6%A0%B7%EF%BC%88%E5%85%B1%E4%BA%AB%E9%83%A8%E5%88%86%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">2. 对每个进程都一样（共享部分）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F"><span class="toc-number">3.</span> <span class="toc-text">进程虚拟内存区域</span></a></li></ol>
   </div>
 </section>
 
@@ -4014,7 +4031,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4111,6 +4128,60 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     },"阅读进度")
     // todo：配置项开关, 哪些页面添加阅读进度
   })
+</script>
+
+
+
+        <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = "https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js";
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typesetPromise();
+  }
 </script>
 
 
@@ -4338,7 +4409,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://happy-door.github.io/InDoor/","name":"Happy Door"}},{"@type":"ListItem","position":2,"item":{"@id":"https://happy-door.github.io/InDoor/categories/笔记/","name":"笔记"}},{"@type":"ListItem","position":3,"item":{"@id":"https://happy-door.github.io/InDoor/2025/12/05/虚拟内存/","name":"虚拟内存——与物理内存建立映射：页"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","description":""},"publisher":{"@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://happy-door.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"虚拟内存——与物理内存建立映射：页","description":"为了更好地共享同一块物理内存的数据 &amp; 简化编程模型，虚拟内存（Virtual Memory） 应运而生。虚拟内存为每个进程提供独立、连续、逻辑统一的地址空间。实际访问发生在物理内存 + 磁盘之间，由操作系统自动管理。本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://happy-door.github.io/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/"},"publisher":{"@type":"Organization","name":"Happy Door","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://happy-door.github.io/2025/12/05/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/","wordCount":141,"datePublished":"2025-12-05T10:18:55.000Z","dateModified":"2025-12-05T10:33:14.722Z","articleSection":"笔记","keywords":"默认标签","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://happy-door.github.io/InDoor/","name":"Happy Door"}},{"@type":"ListItem","position":2,"item":{"@id":"https://happy-door.github.io/InDoor/categories/笔记/","name":"笔记"}},{"@type":"ListItem","position":3,"item":{"@id":"https://happy-door.github.io/InDoor/2025/12/06/VM2/","name":"虚拟内存——Linux 进程虚拟内存布局概述"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","description":""},"publisher":{"@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://happy-door.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"虚拟内存——Linux 进程虚拟内存布局概述","description":"本篇笔记记录 Linux 进程的虚拟内存体系结构，详细阐述了内核虚拟内存和进程虚拟内存的区域划分、数据结构以及它们在内存管理中的作用。","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://happy-door.github.io/2025/12/06/VM2/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/"},"publisher":{"@type":"Organization","name":"Happy Door","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://happy-door.github.io/2025/12/06/VM2/","wordCount":67,"datePublished":"2025-12-06T06:57:44.000Z","dateModified":"2025-12-06T07:16:35.591Z","articleSection":"笔记","keywords":"默认标签","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
