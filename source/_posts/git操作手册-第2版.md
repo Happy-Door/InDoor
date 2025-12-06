@@ -157,6 +157,10 @@ git push origin feature/alkaid-add-pdf
 这一步意味着你准备将修改提交给门派审核！
 
 ## Pull Request（PR）审核流程
+
+如果你通过本地 git 创建了 PR（如上一步所说），可忽略本部分。  
+如果你使用 GitHub 的网页界面创建 PR
+
 **步骤：**
 
 1. 打开 GitHub → 你的分支 → **New Pull Request**
@@ -164,6 +168,7 @@ git push origin feature/alkaid-add-pdf
 3. 填写说明内容 → 点击 *Create Pull Request*
 4. 等待队友 Review
 5. 审核通过后 **才能被合并**
+
 
 > 你不需要合并自己的 PR
 > PR 应由其他成员审核并 Merge
