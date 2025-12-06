@@ -14,7 +14,7 @@ author: 土土
 updated:
 ---
 
-继第一版 [Git功法入门](/_posts/Git功法入门) 后，在增加了分支控制并简化操作流程的基础上，逍遥门整合出了第二版 git 操作手册！
+继第一版 {% post_link Git功法入门 %} 后，在增加了分支控制并简化操作流程的基础上，逍遥门整合出了第二版 git 操作手册！
 
 <!-- more -->
 
@@ -158,8 +158,8 @@ git push origin feature/alkaid-add-pdf
 
 ## Pull Request（PR）审核流程
 
-如果你通过本地 git 创建了 PR（如上一步所说），可忽略本部分。  
-如果你使用 GitHub 的网页界面创建 PR
+你通过本地 git 创建了 PR（如上一步所说），
+还需要使用 GitHub 的网页界面创建 PR
 
 **步骤：**
 
