@@ -47,7 +47,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-12-05T10:18:55.000Z">
-<meta property="article:modified_time" content="2025-12-05T10:33:14.722Z">
+<meta property="article:modified_time" content="2025-12-06T16:02:02.327Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="默认标签">
 <meta name="twitter:card" content="summary">
@@ -2257,7 +2257,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/InDoor/',
     debug: false,
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1765030804875),
+    lastupdate: new Date(1765036964873),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2828,6 +2828,33 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <blockquote>
 <p>注意：高速缓存 Cache 访问通常用 <strong>物理地址</strong> 而不是虚拟地址，因为这样能避免多进程共享同一物理页时带来的冲突，也能避免权限检查在 Cache 前额外处理。使用物理地址更简单、安全、通用。</p>
 </blockquote>
+</div><div class="story post-story"><h2 id="内存映射"><a href="#内存映射" class="headerlink" title="内存映射"></a>内存映射</h2><p>将一个虚拟内存区域与一个磁盘上的对象（object）关联的过程称为 内存映射（memory mapping）。对象分为下列两种：</p>
+<ul>
+<li>普通文件。</li>
+<li>匿名文件，由内核创建，全为二进制零。用于程序中那些需要初始化为零的动态内存区域。</li>
+</ul>
+<blockquote>
+<p>一旦一个虚拟页面被初始化（即分配了内容），它就可以在物理内存和交换文件之间进行换入和换出。</p>
+</blockquote>
+<h3 id="交换文件-Swap-File-交换空间-Swap-Space"><a href="#交换文件-Swap-File-交换空间-Swap-Space" class="headerlink" title="交换文件 (Swap File) &#x2F; 交换空间 (Swap Space)"></a>交换文件 (Swap File) &#x2F; 交换空间 (Swap Space)</h3><ul>
+<li><strong>定义：</strong> 交换文件（交换空间）是一个由<strong>内核维护的专门区域</strong>，通常位于<strong>磁盘</strong>上。</li>
+<li><strong>作用：</strong> 它充当<strong>物理内存 (RAM) 的扩展</strong>，用于临时存放当前不需要使用但已被初始化的虚拟页面。<ul>
+<li>当物理内存不足时，内核会将一些<strong>不常用</strong>的、已初始化的虚拟页面从物理内存中<strong>换出 (swap out)</strong>，写入到交换文件中。</li>
+<li>当程序再次需要访问这些页面时，内核会再将它们从交换文件中<strong>换入 (swap in)</strong>，重新加载到物理内存中。</li>
+</ul>
+</li>
+</ul>
+<h4 id="交换空间对虚拟内存的限制"><a href="#交换空间对虚拟内存的限制" class="headerlink" title="交换空间对虚拟内存的限制"></a>交换空间对虚拟内存的限制</h4><blockquote>
+<p>在任何时刻，交换空间都限制着当前运行着的进程能够分配的虚拟页面的总数。</p>
+</blockquote>
+<h3 id="共享对象"><a href="#共享对象" class="headerlink" title="共享对象"></a>共享对象</h3><p>对共享对象的改变对所有共享这个对象的进程可见，且反映在磁盘上的原始对象上。<br>对私有对象的改变仅自己可见，且不反映在磁盘上。</p>
+<p>私有对象通过 <strong>写时复制</strong> 映射到虚拟内存中。当故障处理程序注意到保护异常是由写时复制区域引起，进行处理后返回就可以正常执行写操作了。</p>
+<h3 id="部分函数"><a href="#部分函数" class="headerlink" title="部分函数"></a>部分函数</h3><ul>
+<li>fork 创建一个子进程。得到独立PID，但会复制父进程的虚拟地址空间（采用写时复制技术），因此父子进程的代码和数据在物理内存中最初是共享的。</li>
+<li>execve 加载并执行一个新的程序。删除已存在的用户区域，重新映射私有和共享区域后 <strong>设置程序计数器（PC）</strong> 使之指向代码区域的入口。<strong>进程 PID 保持不变</strong>。</li>
+<li>mmap 创建一个新的虚拟内存区域。用于将文件或匿名区域映射到进程的地址空间。</li>
+<li>munmap 删除虚拟内存区域。对已删除区域的访问会造成段错误。</li>
+</ul>
 
 </div>
   </div>
@@ -2853,10 +2880,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-05T18:33:14+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-07T00:02:02+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：2025年12月5日</p>
+    <p>本页文档最后更新于：2025年12月7日</p>
   </a>
 </div>
 
@@ -3014,7 +3041,7 @@ waline 的评论正文颜色加载自（cdn.ym...</p>
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E9%A1%B5%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.</span> <span class="toc-text">虚拟页的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%9A%84%E9%AB%98%E6%95%88%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">虚拟内存的高效性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%BF%BB%E8%AF%91"><span class="toc-number">2.</span> <span class="toc-text">地址翻译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">安全性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">优化：</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E9%A1%B5%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.</span> <span class="toc-text">虚拟页的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%9A%84%E9%AB%98%E6%95%88%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">虚拟内存的高效性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%BF%BB%E8%AF%91"><span class="toc-number">2.</span> <span class="toc-text">地址翻译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">安全性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">优化：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84"><span class="toc-number">3.</span> <span class="toc-text">内存映射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%96%87%E4%BB%B6-Swap-File-%E4%BA%A4%E6%8D%A2%E7%A9%BA%E9%97%B4-Swap-Space"><span class="toc-number">3.1.</span> <span class="toc-text">交换文件 (Swap File) &#x2F; 交换空间 (Swap Space)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E7%A9%BA%E9%97%B4%E5%AF%B9%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-number">3.1.1.</span> <span class="toc-text">交换空间对虚拟内存的限制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B1%E4%BA%AB%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.2.</span> <span class="toc-text">共享对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E5%87%BD%E6%95%B0"><span class="toc-number">3.3.</span> <span class="toc-text">部分函数</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -4021,7 +4048,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4345,7 +4372,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://happy-door.github.io/InDoor/","name":"Happy Door"}},{"@type":"ListItem","position":2,"item":{"@id":"https://happy-door.github.io/InDoor/categories/笔记/","name":"笔记"}},{"@type":"ListItem","position":3,"item":{"@id":"https://happy-door.github.io/InDoor/2025/12/05/VM1/","name":"虚拟内存——与物理内存建立映射：页"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","description":""},"publisher":{"@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://happy-door.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"虚拟内存——与物理内存建立映射：页","description":"为了更好地共享同一块物理内存的数据 &amp; 简化编程模型，虚拟内存（Virtual Memory） 应运而生。虚拟内存为每个进程提供独立、连续、逻辑统一的地址空间。实际访问发生在物理内存 + 磁盘之间，由操作系统自动管理。本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://happy-door.github.io/2025/12/05/VM1/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/"},"publisher":{"@type":"Organization","name":"Happy Door","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://happy-door.github.io/2025/12/05/VM1/","wordCount":141,"datePublished":"2025-12-05T10:18:55.000Z","dateModified":"2025-12-05T10:33:14.722Z","articleSection":"笔记","keywords":"默认标签","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://happy-door.github.io/InDoor/","name":"Happy Door"}},{"@type":"ListItem","position":2,"item":{"@id":"https://happy-door.github.io/InDoor/categories/笔记/","name":"笔记"}},{"@type":"ListItem","position":3,"item":{"@id":"https://happy-door.github.io/InDoor/2025/12/05/VM1/","name":"虚拟内存——与物理内存建立映射：页"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","description":""},"publisher":{"@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://happy-door.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"虚拟内存——与物理内存建立映射：页","description":"为了更好地共享同一块物理内存的数据 &amp; 简化编程模型，虚拟内存（Virtual Memory） 应运而生。虚拟内存为每个进程提供独立、连续、逻辑统一的地址空间。实际访问发生在物理内存 + 磁盘之间，由操作系统自动管理。本篇笔记记录虚拟内存的体系结构、地址翻译过程与优化机制。","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://happy-door.github.io/2025/12/05/VM1/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/"},"publisher":{"@type":"Organization","name":"Happy Door","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://happy-door.github.io/2025/12/05/VM1/","wordCount":141,"datePublished":"2025-12-05T10:18:55.000Z","dateModified":"2025-12-06T16:02:02.327Z","articleSection":"笔记","keywords":"默认标签","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
