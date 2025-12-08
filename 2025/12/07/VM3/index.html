@@ -5,8 +5,8 @@
   <meta name="Volantis" content="6.0.0-alpha.1">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://happy-door.github.io/archives/2025/05/"/>
+  
+  <link rel="canonical" href="https://happy-door.github.io/2025/12/07/vm3/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -35,16 +35,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>归档：2025/5 - Happy Door</title>
-  <meta name="keywords" content="undefined">
+  <title>虚拟内存——动态内存分配 - Happy Door</title>
+  <meta name="keywords" content="默认标签,undefined">
   <meta desc name="description" content="Happy Door - John Doe - Happy Door">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Happy Door">
-<meta property="og:url" content="https://happy-door.github.io/archives/2025/05/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="虚拟内存——动态内存分配">
+<meta property="og:url" content="https://happy-door.github.io/2025/12/07/VM3/index.html">
 <meta property="og:site_name" content="Happy Door">
+<meta property="og:description" content="动态内存分配器维护虚拟内存的堆（heap）">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-12-06T16:12:35.000Z">
+<meta property="article:modified_time" content="2025-12-08T15:20:38.496Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="默认标签">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2244,7 +2249,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2318,7 +2323,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin begin-->
     
     <!-- Custom Files bodyBegin end-->
-    <header itemscope itemtype="https://schema.org.cn/WPHeader" id="l_header" class="l_header auto shadow floatable blur " style='opacity: 0' >
+    <header itemscope itemtype="https://schema.org.cn/WPHeader" id="l_header" class="l_header auto shadow floatable blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2683,110 +2688,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div id="l_body">
       <div id="l_cover">
   
-    
-      <div class="cover-wrapper  dock" id='half'>
-        
-  <div id="parallax-window"></div>
-
-<div class='cover-body'>
-  <div class='top'>
-    
-    
-      <p class="title">Happy Door</p>
-    
-    
-      <p class="subtitle">天下第一逍遥门</p>
-    
-  </div>
-  <div class='bottom'>
-    <div class='menu navigation'>
-      <div class='list-h'>
-        
-          
-            <a href="/InDoor/"
-              
-              
-              active-action="action-InDoor">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4f0.svg'><p>博客</p>
-            </a>
-          
-            <a href="/InDoor/blogs/"
-              
-              
-                target="_self"
-              
-              active-action="action-InDoorblogs">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f516.svg'><p>文档</p>
-            </a>
-          
-            <a target="_blank" rel="noopener" href="https://github.com/Happy-Door/InDoor"
-              
-              
-              active-action="action-https:githubcomHappy-DoorInDoor">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4af.svg'><p>示例</p>
-            </a>
-          
-            <a target="_blank" rel="noopener" href="https://github.com/Happy-Door/InDoor"
-              
-              
-              active-action="action-https:githubcomHappy-DoorInDoor">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4ac.svg'><p>帮助</p>
-            </a>
-          
-            <a href="/InDoor/README.md/"
-              
-              
-              active-action="action-InDoorREADMEmd">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f497.svg'><p>鸣谢</p>
-            </a>
-          
-            <a href="/InDoor/blogs/"
-              
-              
-              active-action="action-InDoorblogs">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f5c3.svg'><p>归档</p>
-            </a>
-          
-            <a href="https://github.com/Happy-Door/InDoor"
-              
-              
-                target="_self"
-              
-              active-action="action-https:githubcomHappy-DoorInDoor">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f9ec.svg'><p>源码</p>
-            </a>
-          
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-  
 </div>
 
       <div id="safearea">
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://happy-door.github.io/2025/05/21/gitguideline/">
+  <article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://happy-door.github.io/2025/12/07/VM3/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Happy Door">
   </span>
@@ -2795,74 +2704,330 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/InDoor/2025/05/21/gitguideline/"  itemprop="url">
-        Git功法入门
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        前言本篇旨在介绍逍遥门日常生活中常用的几个git操作，帮助不熟悉git的朋友快速上手，顺便给某些总是记不住这些操作的家伙（逃）充当备忘录。
-准备工作Git是什么？Git 是一个开源的分布式版本控制系统，用于跟踪文件和目录的更改。Git 通过记录文件的变更历史，允许开发者在不同的时间点查看文件的版本，并且可以轻松地回溯到任何特定的版本。Git 也广泛用于多人合作构建项目（比如我们的happy ...
-      
+    
+      <h1 class="title" itemprop="name headline">
+        虚拟内存——动态内存分配
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="https://schema.org.cn/Person">
+  <a itemprop="url" class='author' target="_blank" href="https://github.com/Happy-Door/InDoor" rel="nofollow noopener">
+    <img itemprop="image" src="/InDoor/images/logo.jpg" class="lazyload" data-srcset="/InDoor/images/logo.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">Happy Door</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  
+  
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/InDoor/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+        <a href="/InDoor/categories/%E7%AC%94%E8%AE%B0/" itemprop="url"><span itemprop="name">笔记</span></a>
+      </span>
     
   </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' target="_blank" rel="noopener" href='https://github.com/Happy-Door/InDoor'><img src='/InDoor/images/logo.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="https://schema.org.cn/Person">
-            <meta itemprop="image" content="/InDoor/images/logo.jpg">
-            <meta itemprop="name" content="Happy Door">
-            <meta itemprop="url" content="https://github.com/Happy-Door/InDoor">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-05-21T00:00:00+08:00">2025-05-21</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/InDoor/categories/%E6%96%B0%E5%BC%9F%E5%AD%90%E8%BF%9B%EF%BC%81/">新弟子进！</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/InDoor/categories/%E6%96%B0%E5%BC%9F%E5%AD%90%E8%BF%9B%EF%BC%81/" itemprop="url"><span itemprop="name">新弟子进！</span></a>
-            </span>
+
+
+
           
         
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-12-07T00:12:35+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2025年12月7日</p>
+  </a>
+</div>
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
       </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <p>动态内存分配器维护虚拟内存的堆（heap）</p>
+<span id="more"></span>
+
+<p>分配器都显式地分配块。</p>
+<ul>
+<li>显式分配器 malloc + free</li>
+<li>隐式分配器 垃圾收集器</li>
+</ul>
+<div class="story post-story"><h2 id="显式分配器"><a href="#显式分配器" class="headerlink" title="显式分配器"></a>显式分配器</h2><h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">malloc</span><span class="params">(<span class="type">size_t</span> size)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>若成功返回已分配块的指针，否则为NULL，并设置 errno。</p>
+<blockquote>
+<p>32 位模式中 8 对齐；64 位模式中 16 对齐。</p>
+</blockquote>
+<p>malloc 不初始化返回的内存，calloc 可初始化为零，改变已分配块的大小用 realloc。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">sbrk</span><span class="params">(<span class="type">intptr_t</span> incr)</span></span>;</span><br><span class="line"><span class="comment">/* 返回：若成功则为旧的 brk 指针，若出错则为 -1。*/</span></span><br></pre></td></tr></table></figure>
+
+<p>sbrk 函数通过将内核的 brk 指针增加 incr 来收缩和扩展堆。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">free</span><span class="params">(<span class="type">void</span> *ptr)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>ptr 必须指向已分配的块，否则行为未定义。</p>
+<h3 id="目标与要求"><a href="#目标与要求" class="headerlink" title="目标与要求"></a>目标与要求</h3><h4 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h4><ul>
+<li>处理任意请求序列。 分配器不能假设分配和释放请求的顺序。</li>
+<li>立即响应。</li>
+<li>只使用堆。</li>
+<li>对齐块。</li>
+<li>不修改已分配的块。</li>
+</ul>
+<h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><ul>
+<li>最大化吞吐率：每个单位时间内完成的请求数最大化。</li>
+<li>最大化内存利用率。</li>
+</ul>
+<p>有很多方式来描述一个分配器使用堆的效率如何。在我们的经验中，最有用的标准是<br><strong>峰值利用率（peak utilization）</strong>。给定 $n$ 个分配和释放请求的某种顺序：</p>
+<p>$$R_0, R_1, \cdots, R_k, \cdots, R_{n-1}$$</p>
+<p>如果一个应用程序请求一个 $p$ 字节的块，那么得到的已分配块的<strong>有效载荷（payload）</strong> 是 $p$ 字节。<br>在请求 $R_k$ 完成之后，<strong>聚集有效载荷（aggregate payload）</strong> 记为 $P_k$，为当前已分配的块的有效载荷之和；<br>而 $H_k$ 表示堆的当前的（单调非递减的）大小，或指前 $k$ 个请求的最高峰。</p>
+<p>那么，前 $k+1$ 个请求的<strong>峰值利用率</strong> 记为 $U_k$，可通过下式得到：</p>
+<p>$$U_k &#x3D; \frac{\max_{i \le k} P_i}{H_k}$$</p>
+<hr>
+<p>分配器的目标是在整个序列中使峰值利用率 $U_{n-1}$ 最大化。<br>正如我们将要看到的，在最大化吞吐率和最大化利用率之间是互相牵制的。<br>特别是，以堆利用率为代价，很容易编写出吞吐率最大的分配器。<br>分配器设计中一个有趣的挑战就是在两个目标之间找到一个适当的平衡。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><h4 id="碎片"><a href="#碎片" class="headerlink" title="碎片"></a>碎片</h4><p>造成堆利用率低的主要原因是碎片（fragmentation）。</p>
+<ul>
+<li>内部碎片 已分配块比有效载荷大。任意时刻内部碎片的数量只取决于以前请求的模式和分配器的实现方式。</li>
+<li>外部碎片 空闲内存合起来足够满足分配请求，但是分散在多个空闲块中的。不仅取决于以前请求的模式和分配器的实现方式，还取决于<em>将来</em>请求的模式。<blockquote>
+<p>外部碎片难以量化和预测，通常采用启发式策略来维持少量的大空闲块而非大量的小空闲块。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h4><ul>
+<li>如何记录空闲块？</li>
+<li>如何选择合适的空闲块来分配？<ul>
+<li><strong>放置策略</strong>：首次适配；下一次适配；最佳适配。</li>
+<li>获取额外堆内存。</li>
+</ul>
+</li>
+<li>放置后如何处理这个空闲块的剩余部分？<ul>
+<li><strong>分割</strong>。</li>
+</ul>
+</li>
+<li>如何处理刚释放的块？<ul>
+<li>合并空闲块。（解决 <strong>假碎片</strong> 问题）立即合并 or 推迟合并。<ul>
+<li>带边界标记的合并：脚部（头部的副本）。优化：只有空闲块需要脚部，在 header 里放 prev_alloc 位。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="隐式空闲链表"><a href="#隐式空闲链表" class="headerlink" title="隐式空闲链表"></a>隐式空闲链表</h3><ul>
+<li>块 &#x3D; 头部 + 有效载荷 + 填充。</li>
+<li>头部 &#x3D; 块大小 + 分配位（最低一位）。<blockquote>
+<p>结束块：设置了分配位但大小为 0 的头部。</p>
+</blockquote>
+</li>
+</ul>
+<p>优点是简单，缺点是任何操作都需要对空闲链表进行搜索，搜索所需时间与堆中已分配块和空闲块的总数呈线性关系。</p>
+<h3 id="显式空闲链表"><a href="#显式空闲链表" class="headerlink" title="显式空闲链表"></a>显式空闲链表</h3><p>双向链表。</p>
+<ul>
+<li>分配块 &#x3D; 头部 + 有效载荷 + 填充 + 脚部</li>
+<li>空闲块 &#x3D; 头部 + (pred + succ + 剩余)有效载荷 + 填充 + 脚部</li>
+</ul>
+<p>维护链表的方式</p>
+<ul>
+<li>后进先出（LIFO）： 常数时间释放，若使用边界标记合并也可以在常数时间释放。</li>
+<li>按照地支顺序。首次适配的内存利用率更高。</li>
+</ul>
+<p>缺点是空闲块需要够大，最大块大小更大，内部碎片风险高。</p>
+<h3 id="分离空闲链表"><a href="#分离空闲链表" class="headerlink" title="分离空闲链表"></a>分离空闲链表</h3><p><strong>分离存储</strong>：维护多个空闲链表，每个链表中的块大小大致相等。</p>
+<p>将所有可能的块大小分成等价类，即<strong>大小类</strong>。</p>
+<h4 id="简单分离存储"><a href="#简单分离存储" class="headerlink" title="简单分离存储"></a>简单分离存储</h4><ul>
+<li>每个大小类的空闲链表的块大小相等，即这个大小类中最大元素的大小。</li>
+<li>分配：首次适配的整块空闲块 or 空闲链表为空时请求固定大小的额外内存片分成相等的块组成新链表。</li>
+<li>优点：分离与释放都为常数时间，不分割不合并，内存开销小，不需头部脚部。最小块大小是一个字。</li>
+<li>缺点：内外碎片多。</li>
+</ul>
+<h4 id="分离适配"><a href="#分离适配" class="headerlink" title="分离适配"></a>分离适配</h4><ul>
+<li>分配：确定大小类，首次适配，可选地分割和合并。请求后分割合并。</li>
+</ul>
+<blockquote>
+<p>其首次适配的内存利用率近似于对整个堆的最佳适配。</p>
+</blockquote>
+<blockquote>
+<p><strong>伙伴系统</strong><br>分离适配特例。每个大小类是 2 的幂。与伙伴地址只有一位不同，快速搜索与合并；内部碎片风险高。</p>
+</blockquote>
+</div><div class="story post-story"><h2 id="垃圾收集（隐式分配器）"><a href="#垃圾收集（隐式分配器）" class="headerlink" title="垃圾收集（隐式分配器）"></a>垃圾收集（隐式分配器）</h2><p>将内存视为一张有向可达图（reachability graph），节点分为根节点和堆节点两组。每个堆节点对应堆中的一个已分配块。根节点为不在堆中但包含了指向堆中的指针的变量。</p>
+<p>若 malloc 找不到合适空闲块，将调用垃圾收集器。仍无则请求。调用包含标记 + 清除两阶段。</p>
+<ul>
+<li><strong>可达</strong>：存在一条从任意根节点到达该点的有向路径。</li>
+<li><strong>保守的垃圾收集器</strong>：可达的标记均正确，但不可达节点可能错误地被标记为可达。</li>
+</ul>
+
+</div>
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
       
-        <div>
-          <a class='readmore' href='/InDoor/2025/05/21/gitguideline/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-08T23:20:38+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>本页文档最后更新于：2025年12月8日</p>
+  </a>
 </div>
 
-          </div>
         
       
-    
-  </section>
+        
+          
   
-    
+  
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/InDoor/tags/%E9%BB%98%E8%AE%A4%E6%A0%87%E7%AD%BE/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>默认标签</p></a></div>
+  <span hidden itemprop="keywords">默认标签</span>
   
 
 
-	
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://happy-door.github.io/2025/12/07/VM3/&title=虚拟内存——动态内存分配 - Happy Door&summary=动态内存分配器维护虚拟内存的堆（heap）"
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://happy-door.github.io/2025/12/07/VM3/&title=虚拟内存——动态内存分配 - Happy Door&summary=动态内存分配器维护虚拟内存的堆（heap）"
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://happy-door.github.io/2025/12/07/VM3/&title=虚拟内存——动态内存分配 - Happy Door&summary=动态内存分配器维护虚拟内存的堆（heap）"
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/InDoor/2025/12/06/git%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C-%E7%AC%AC2%E7%89%88/'>
+          <p class='title'>git操作手册-第2版<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>继第一版 Git功法入门 后，在增加了分支控制并简化操作流程的基础上，逍遥门整合出了第二版 git 操作手册！
+
+
+Git 操作手册
+这是为 不熟悉 Git 的成员 准备的教程不会 Git 也能...</p>
+        </a>
+      
+    </div>
+  
+  <!-- 文章推荐 -->
+  
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="/InDoor/2025/12/07/VM3/index.html#comments">
+    </span>
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
+    
+
+    <div id="layoutHelper-comments"></div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="https://schema.org.cn/WPSideBar">
   
@@ -2871,166 +3036,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       
-<section class="widget text desktop mobile">
-  
-  <header>
-    
-      <i class="fa-brands fa-qq fa-fw" aria-hidden="true"></i><span class='name'>加入 QQ 群</span>
-    
-  </header>
-
-
-  <div class='content'>
-    
-      <p>如果你在修炼中遇到困境，请到 <a target="_blank" rel="noopener" href="https://github.com/Happy-Door/InDoor/issues">Github Issues</a> 或者 <a href="/blogs/#comments">留言板</a> 进行反馈</p>
-
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/InDoor/categories/github/" href="/InDoor/categories/github/"
-            active-action="action-InDoorcategoriesgithub"
-            ><div class='name'>github</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/InDoor/categories/%E6%96%B0%E5%BC%9F%E5%AD%90%E8%BF%9B%EF%BC%81/" href="/InDoor/categories/%E6%96%B0%E5%BC%9F%E5%AD%90%E8%BF%9B%EF%BC%81/"
-            active-action="action-InDoorcategoriesE696B0E5BC9FE5AD90E8BF9BEFBC81"
-            ><div class='name'>新弟子进！</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/InDoor/categories/%E7%AC%94%E8%AE%B0/" href="/InDoor/categories/%E7%AC%94%E8%AE%B0/"
-            active-action="action-InDoorcategoriesE7AC94E8AEB0"
-            ><div class='name'>笔记</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/InDoor/categories/%E9%80%8D%E9%81%A5%E9%97%A8%E6%8C%81%E7%BB%AD%E8%A3%85%E4%BF%AE%E4%B8%AD/" href="/InDoor/categories/%E9%80%8D%E9%81%A5%E9%97%A8%E6%8C%81%E7%BB%AD%E8%A3%85%E4%BF%AE%E4%B8%AD/"
-            active-action="action-InDoorcategoriesE9808DE981A5E997A8E68C81E7BBADE8A385E4BFAEE4B8AD"
-            ><div class='name'>逍遥门持续装修中</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-<section class="widget grid desktop mobile">
-  
-  <header>
-    
-      <i class="fa-solid fa-map-signs fa-fw" aria-hidden="true"></i><span class='name'>分类导航</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="grid navigation fixed">
-      
-        <a class="flat-box" href="/InDoor/README.md/"
-          
-          
-          active-action="action-InDoorREADMEmd">
-          
-            <i class="fa-solid fa-question-circle fa-fw" aria-hidden="true"></i>
-          
-          常见问题
-        </a>
-      
-        <a class="flat-box" href="/InDoor/blogs/"
-          
-          
-          active-action="action-InDoorblogs">
-          
-            <i class="fa-solid fa-play-circle fa-fw" aria-hidden="true"></i>
-          
-          示例博客
-        </a>
-      
-        <a class="flat-box" href="/InDoor/README.md/"
-          
-          
-          active-action="action-InDoorREADMEmd">
-          
-            <i class="fa-solid fa-handshake fa-fw" aria-hidden="true"></i>
-          
-          特别感谢
-        </a>
-      
-        <a class="flat-box" href="/InDoor/blogs/"
-          
-          
-          active-action="action-InDoorblogs">
-          
-            <i class="fa-solid fa-file-alt fa-fw" aria-hidden="true"></i>
-          
-          测试博文
-        </a>
-      
-        <a class="flat-box" href="https://github.com/Happy-Door/hexo-theme-volantis"
-          
-            rel="external nofollow noopener noreferrer"
-          
-          
-            target="_blank"
-          
-          active-action="action-https:githubcomHappy-Doorhexo-theme-volantis">
-          
-            <i class="fa-solid fa-file-code fa-fw" aria-hidden="true"></i>
-          
-          主题源码
-        </a>
-      
-        <a class="flat-box" href="/InDoor/blogs/"
-          
-            rel="external nofollow noopener noreferrer"
-          
-          
-            target="_blank"
-          
-          active-action="action-InDoorblogs">
-          
-            <i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i>
-          
-          更新日志
-        </a>
-      
-    </div>
-  </div>
-</section>
-
     
   
 
@@ -3039,20 +3044,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-<section class="widget text desktop mobile">
+
+
+<section class="widget toc-wrapper desktop mobile" id="toc-div" >
   
   <header>
     
-      <a href='/blogs/'><i class="fa-solid fa-plus fa-fw" aria-hidden="true"></i><span class='name'>社区活动</span></a>
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
   <div class='content'>
-    
-      <p><strong>都来听epic！</strong></p>
-
-    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E5%BC%8F%E5%88%86%E9%85%8D%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">显式分配器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">常用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E4%B8%8E%E8%A6%81%E6%B1%82"><span class="toc-number">1.2.</span> <span class="toc-text">目标与要求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A6%81%E6%B1%82"><span class="toc-number">1.2.1.</span> <span class="toc-text">要求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">1.2.2.</span> <span class="toc-text">目标</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A2%8E%E7%89%87"><span class="toc-number">1.3.1.</span> <span class="toc-text">碎片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.2.</span> <span class="toc-text">其他问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E7%A9%BA%E9%97%B2%E9%93%BE%E8%A1%A8"><span class="toc-number">1.4.</span> <span class="toc-text">隐式空闲链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E5%BC%8F%E7%A9%BA%E9%97%B2%E9%93%BE%E8%A1%A8"><span class="toc-number">1.5.</span> <span class="toc-text">显式空闲链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%A6%BB%E7%A9%BA%E9%97%B2%E9%93%BE%E8%A1%A8"><span class="toc-number">1.6.</span> <span class="toc-text">分离空闲链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%88%86%E7%A6%BB%E5%AD%98%E5%82%A8"><span class="toc-number">1.6.1.</span> <span class="toc-text">简单分离存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E7%A6%BB%E9%80%82%E9%85%8D"><span class="toc-number">1.6.2.</span> <span class="toc-text">分离适配</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%EF%BC%88%E9%9A%90%E5%BC%8F%E5%88%86%E9%85%8D%E5%99%A8%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">垃圾收集（隐式分配器）</span></a></li></ol>
   </div>
 </section>
 
@@ -3064,6 +3068,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <!-- Custom Files side end -->
 </aside>
+
 
 
         </div>
@@ -4159,6 +4164,60 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
+        <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = "https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js";
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typesetPromise();
+  }
+</script>
+
+
+
 
 <script>
   function listenSidebarTOC() {
@@ -4382,7 +4441,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://happy-door.github.io/InDoor/","name":"Happy Door"}},{"@type":"ListItem","position":2,"item":{"@id":"https://happy-door.github.io/InDoor/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"https://happy-door.github.io/InDoor/archives/2025/","name":"2025年"}},{"@type":"ListItem","position":4,"item":{"@id":"https://happy-door.github.io/InDoor/archives/2025/5/","name":"5月"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","description":""},"publisher":{"@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://happy-door.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/"},"publisher":{"@type":"Organization","name":"Happy Door","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://happy-door.github.io/InDoor/","name":"Happy Door"}},{"@type":"ListItem","position":2,"item":{"@id":"https://happy-door.github.io/InDoor/categories/笔记/","name":"笔记"}},{"@type":"ListItem","position":3,"item":{"@id":"https://happy-door.github.io/InDoor/2025/12/07/VM3/","name":"虚拟内存——动态内存分配"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/","description":""},"publisher":{"@type":"Organization","name":"Happy Door","url":"https://happy-door.github.io/InDoor/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://happy-door.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"虚拟内存——动态内存分配","description":"动态内存分配器维护虚拟内存的堆（heap）","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://happy-door.github.io/2025/12/07/VM3/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://happy-door.github.io/InDoor/"},"publisher":{"@type":"Organization","name":"Happy Door","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://happy-door.github.io/2025/12/07/VM3/","wordCount":21,"datePublished":"2025-12-06T16:12:35.000Z","dateModified":"2025-12-08T15:20:38.496Z","articleSection":"笔记","keywords":"默认标签","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
